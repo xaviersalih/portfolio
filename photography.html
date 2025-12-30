@@ -3,29 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <title>Photography</title>
-  <link rel="stylesheet" href="style.css">
   <style>
+    body {
+      margin: 0;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
     .gallery {
       display: flex;
-      flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
+      padding: 20px;
     }
     .gallery iframe {
-      flex: 1 1 calc(33.333% - 20px);
-      min-width: 300px;
-      max-width: 100%;
+      width: 30%;
+      aspect-ratio: 4/3;
     }
   </style>
 </head>
 <body>
   <h1>Photography</h1>
   <div class="gallery">
-    <iframe src="https://www.behance.net/embed/project/233839839?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
-    <iframe src="https://www.behance.net/embed/project/233839871?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
-    <iframe src="https://www.behance.net/embed/project/233839901?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
-    <iframe src="https://www.behance.net/embed/project/233839949?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
-    <iframe src="https://www.behance.net/embed/project/233839969?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
-    <iframe src="https://www.behance.net/embed/project/233840005?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
+    <iframe src="https://www.behance.net/embed/project/233839839?ilo0=1" frameborder="0" allowfullscreen></iframe>
+    <iframe src="https://www.behance.net/embed/project/233839871?ilo0=1" frameborder="0" allowfullscreen></iframe>
+    <iframe src="https://www.behance.net/embed/project/233839901?ilo0=1" frameborder="0" allowfullscreen></iframe>
   </div>
+  <script src="https://www.behance.net/static/js/embed.js"></script>
 </body>
 </html>
