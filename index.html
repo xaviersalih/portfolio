@@ -4,33 +4,208 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wael Salih | Photographer – Videographer – Editor</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
-    .video-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index:-1; overflow:hidden; }
-    .nav { position: fixed; top: 0; left: 0; z-index: 2; padding: 20px; }
-    .nav a { color: white; text-decoration: none; font-size: 1.2rem; background: rgba(0,0,0,0.5); padding: 8px 12px; border-radius: 4px; }
-    .hero { position: relative; z-index:1; color: white; text-align: center; padding-top: 50vh; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      background: #0e0e0e;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .video-bg iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      padding: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      background: rgba(0,0,0,0.5);
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .nav a:hover {
+      background: rgba(0,0,0,0.7);
+    }
+    .nav a.active {
+      background: rgba(255,255,255,0.2);
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .hero {
+      position: relative;
+      z-index: 1;
+      color: white;
+      text-align: center;
+      padding-top: 50vh;
+      height: 100vh;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      opacity: 0.7;
+    }
+    .content-section {
+      background: #0e0e0e;
+      min-height: 100vh;
+      padding-top: 100px;
+    }
+    .content-section h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 40px;
+    }
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      flex-wrap: wrap;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .gallery iframe {
+      width: 404px;
+      height: 316px;
+      border: none;
+    }
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+    .videos iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+    @media (max-width: 768px) {
+      .videos {
+        grid-template-columns: 1fr;
+      }
+      .gallery {
+        flex-direction: column;
+        align-items: center;
+      }
+      .gallery iframe {
+        width: 100%;
+        max-width: 404px;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <nav class="nav"><a href="photography.html">Photography</<a href="videos.html">Videos</a>a></nav>
-  <div class="video-bg">
+  <nav class="nav">
+    <a onclick="showTab('home')" id="home-tab" class="active">Home</a>
+    <a onclick="showTab('photography')" id="photography-tab">Photography</a>
+    <a onclick="showTab('videos')" id="videos-tab">Videos</a>
+  </nav>
+
+  <!-- Home Tab -->
+  <div id="home" class="tab-content active">
     <div class="video-bg">
-  <iframe
-    src="https://player.vimeo.com/video/898002243?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0&badge=0&autopause=0"
-    frameborder="0"
-    allow="autoplay; fullscreen; picture-in-picture"
-    referrerpolicy="strict-origin-when-cross-origin"
-    style="position:absolute;top:0;left:0;width:100%;height:100%;"
-    title="Background video"
-  ></iframe>
-</div>
-<script src="https://player.vimeo.com/api/player.js"></script>
- </div>
-  <header class="hero">
-    <h1>Wael Salih</h1>
-    <p>Photographer - Videographer - Editor</p>
-  </header>
+      <iframe
+        src="https://player.vimeo.com/video/898002243?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0&badge=0&autopause=0"
+        frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        referrerpolicy="strict-origin-when-cross-origin"
+        title="Background video"
+      ></iframe>
+    </div>
+    <header class="hero">
+      <h1>Wael Salih</h1>
+      <p>Photographer - Videographer - Editor</p>
+    </header>
+  </div>
+
+  <!-- Photography Tab -->
+  <div id="photography" class="tab-content">
+    <div class="content-section">
+      <h1>Photography</h1>
+      <div class="gallery">
+        <iframe src="https://www.behance.net/embed/project/233839901?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
+        <iframe src="https://www.behance.net/embed/project/211820067?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
+        <iframe src="https://www.behance.net/embed/project/233840083?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Videos Tab -->
+  <div id="videos" class="tab-content">
+    <div class="content-section">
+      <h1>Videos</h1>
+      <div class="videos">
+        <iframe src="https://player.vimeo.com/video/1117972398" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/1117972254" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/1097733804" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/1097718082" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/1041163275" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/984471494" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/924467659" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/911067183" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/911030224" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/906707440" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/898002243" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/898150345" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
   <script src="https://player.vimeo.com/api/player.js"></script>
+  <script src="https://www.behance.net/static/js/embed.js"></script>
+  <script>
+    function showTab(tabName) {
+      // Hide all tabs
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      
+      // Remove active class from all nav links
+      const navLinks = document.querySelectorAll('.nav a');
+      navLinks.forEach(link => link.classList.remove('active'));
+      
+      // Show selected tab
+      document.getElementById(tabName).classList.add('active');
+      document.getElementById(tabName + '-tab').classList.add('active');
+    }
+  </script>
 </body>
 </html>
