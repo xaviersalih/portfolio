@@ -1,34 +1,46 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Photography</title>
-  <style>
-    body {
-      margin: 0;
-      background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
-    }
-    .gallery iframe {
-      width: 30%;
-      height: 316px;
-      border: none;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Photography | Wael Salih</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>Photography</h1>
-  <div class="gallery">
+  <header class="nav-wrap">
+    <nav class="nav">
+      <a href="index.html" class="brand">Wael Salih</a>
+      <div class="links">
+        <a class="active" href="photography.html">Photography</a>
+        <a href="videos.html">Videos</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="page-head">
+      <h1>Photography</h1>
+      <p class="muted">Selected work — click any image to view.</p>
+    </section>
+
+    <section class="grid" id="photoGrid">
+      <!-- Replace with your thumbnails and full‑size photos -->
+      <button class="card" data-full="assets/photos/photo-01.jpg" aria-label="Open photo 1">
+        <img src="assets/thumbs/thumb-01.jpg" alt="Photo 1" loading="lazy" />
+      </button>
+      <button class="card" data-full="assets/photos/photo-02.jpg" aria-label="Open photo 2">
+        <img src="assets/thumbs/thumb-02.jpg" alt="Photo 2" loading="lazy" />
+      </button>
+      <!-- add more buttons as needed -->
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+    <img id="lbImg" alt="Expanded photo" />
   </div>
-  <script src="https://www.behance.net/static/js/embed.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>
