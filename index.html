@@ -1,257 +1,553 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Wael Salih | Photographer – Videographer – Editor</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background: #000000;
-      color: #ffffff;
-      line-height: 1.6;
-      font-weight: 300;
-      letter-spacing: 0.5px;
-    }
-    .video-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      overflow: hidden;
-    }
-    .video-bg iframe {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100vw;
-      height: 100vh;
-      transform: translate(-50%, -50%);
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: cover;
-    }
-    @media (min-aspect-ratio: 16/9) {
-      .video-bg iframe {
-        height: 100vh;
-        width: 177.77vh; /* 16:9 ratio */
-      }
-    }
-    @media (max-aspect-ratio: 16/9) {
-      .video-bg iframe {
-        width: 100vw;
-        height: 56.25vw; /* 16:9 ratio */
-      }
-    }
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 100;
-      padding: 20px;
-      display: flex;
-      gap: 10px;
-    }
-    .nav a {
-      color: rgba(255, 255, 255, 0.9);
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 400;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      background: rgba(0,0,0,0.3);
-      padding: 10px 18px;
-      border-radius: 2px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    .nav a:hover {
-      background: rgba(0,0,0,0.6);
-      border-color: rgba(255,255,255,0.3);
-    }
-    .nav a.active {
-      background: rgba(255,255,255,0.15);
-      border-color: rgba(255,255,255,0.4);
-    }
-    .tab-content {
-      display: none;
-    }
-    .tab-content.active {
-      display: block;
-    }
-    .hero {
-      position: relative;
-      z-index: 1;
-      color: white;
-      text-align: center;
-      padding-top: 50vh;
-      height: 100vh;
-    }
-    .hero h1 {
-      font-size: 4rem;
-      margin-bottom: 10px;
-      font-weight: 200;
-      letter-spacing: 3px;
-    }
-    .hero p {
-      opacity: 0.8;
-      font-size: 1.1rem;
-      font-weight: 300;
-      letter-spacing: 2px;
-    }
-    .content-section {
-      background: #0e0e0e;
-      min-height: 100vh;
-      padding-top: 100px;
-    }
-    .content-section h1 {
-      text-align: center;
-      font-size: 3rem;
-      margin-bottom: 40px;
-      font-weight: 200;
-      letter-spacing: 3px;
-    }
-    .gallery {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
-      flex-wrap: wrap;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .gallery iframe {
-      width: 404px;
-      height: 316px;
-      border: none;
-    }
-    .videos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-      gap: 30px;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 20px 60px;
-    }
-    .videos iframe {
-      width: 100%;
-      height: 315px;
-      border: none;
-    }
-    @media (max-width: 768px) {
-      .videos {
-        grid-template-columns: 1fr;
-      }
-      .gallery {
-        flex-direction: column;
-        align-items: center;
-      }
-      .gallery iframe {
-        width: 100%;
-        max-width: 404px;
-      }
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography — Xavier Salih</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #0a0a0a;
+            --color-secondary: #666666;
+            --color-accent: #d4d4d4;
+            --color-bg: #000000;
+            --font-display: 'Crimson Pro', serif;
+            --font-body: 'DM Sans', sans-serif;
+            --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: opacity 0.3s var(--ease-smooth);
+        }
+
+        .nav-logo:hover {
+            opacity: 0.6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.875rem;
+            letter-spacing: 0.3px;
+            color: var(--color-secondary);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s var(--ease-smooth);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-primary);
+            transition: width 0.4s var(--ease-smooth);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--color-primary);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 12rem 3rem 8rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            animation: fadeIn 1.2s var(--ease-smooth);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 300;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: slideUp 1s var(--ease-smooth) 0.2s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--color-secondary);
+            max-width: 500px;
+            letter-spacing: 0.3px;
+            opacity: 0;
+            animation: slideUp 1s var(--ease-smooth) 0.4s forwards;
+        }
+
+        /* Gallery Grid */
+        .gallery-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 3rem 8rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 4rem 3rem;
+        }
+
+        .gallery-item {
+            opacity: 0;
+            animation: fadeInScale 0.8s var(--ease-smooth) forwards;
+        }
+
+        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+        .gallery-item:nth-child(5) { animation-delay: 0.5s; }
+        .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+        .gallery-item:nth-child(n+7) { animation-delay: 0.7s; }
+
+        .project-frame {
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            transition: all 0.6s var(--ease-smooth);
+            cursor: pointer;
+        }
+
+        .project-frame:hover {
+            border-color: rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-frame iframe {
+            width: 100%;
+            height: 340px;
+            border: none;
+            display: block;
+            transition: transform 0.6s var(--ease-smooth);
+        }
+
+        .project-frame:hover iframe {
+            transform: scale(1.02);
+        }
+
+        .project-info {
+            padding: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .project-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.813rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--color-secondary);
+            text-decoration: none;
+            transition: all 0.3s var(--ease-smooth);
+        }
+
+        .project-link::after {
+            content: '→';
+            transition: transform 0.3s var(--ease-smooth);
+        }
+
+        .project-link:hover {
+            color: var(--color-primary);
+        }
+
+        .project-link:hover::after {
+            transform: translateX(4px);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+            padding: 4rem 3rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-text {
+            font-size: 0.875rem;
+            color: var(--color-secondary);
+            letter-spacing: 0.3px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .social-links a {
+            font-size: 0.875rem;
+            color: var(--color-secondary);
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            transition: color 0.3s var(--ease-smooth);
+        }
+
+        .social-links a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--color-primary);
+            width: 0%;
+            z-index: 1001;
+            transition: width 0.1s linear;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1.5rem 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .nav-links a {
+                font-size: 0.813rem;
+            }
+
+            .hero {
+                padding: 10rem 2rem 6rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+                letter-spacing: -1px;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .gallery-container {
+                padding: 0 2rem 6rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Custom Selection */
+        ::selection {
+            background: var(--color-primary);
+            color: var(--color-bg);
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body>
-  <nav class="nav">
-    <a onclick="showTab('home')" id="home-tab" class="active">Home</a>
-    <a onclick="showTab('photography')" id="photography-tab">Photography</a>
-    <a onclick="showTab('videos')" id="videos-tab">Videos</a>
-  </nav>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!-- Home Tab -->
-  <div id="home" class="tab-content active">
-    <div class="video-bg">
-      <iframe
-        src="https://player.vimeo.com/video/898002243?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0&badge=0&autopause=0&controls=0&sidedock=0"
-        frameborder="0"
-        allow="autoplay; fullscreen; picture-in-picture"
-        referrerpolicy="strict-origin-when-cross-origin"
-        title="Background video"
-      ></iframe>
-    </div>
-    <header class="hero">
-      <h1>Wael Salih</h1>
-      <p>Photographer - Videographer - Editor</p>
-    </header>
-  </div>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Xavier Salih</a>
+            <div class="nav-links">
+                <a href="index.html">Work</a>
+                <a href="photography.html" class="active">Photography</a>
+                <a href="videos.html">Video</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-  <!-- Photography Tab -->
-  <div id="photography" class="tab-content">
-    <div class="content-section">
-      <h1>Photography</h1>
-      <div class="gallery">
-        <iframe src="https://www.behance.net/embed/project/233839901?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
-        <iframe src="https://www.behance.net/embed/project/211820067?ilo0=1" height="316" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
-        <iframe src="https://www.behance.net/embed/project/233840083?ilo0=1" height="31
-           <iframe src="https://www.behance.net/embed/project/233839839" height="316" width="404" allowfullscreen frameborder="0"></iframe>
-        <iframe src="https://www.behance.net/embed/project/233839871" height="316" width="404" allowfullscreen frameborder="0"></iframe>
-        <iframe src="https://www.behance.net/embed/project/233839901" height="316" width="404" allowfullscreen frameborder="0"></iframe>
-        <iframe src="https://www.behance.net/embed/project/233839949" height="316" width="404" allowfullscreen frameborder="0"></iframe>
-        <iframe src="https://www.behance.net/embed/project/233839969" height="316" width="404" allowfullscreen frameborder="0"></iframe>
-        <iframe src="https://www.behance.net/embed/project/233840005" height="316" width="404" allowfullscreen frameborder="0"></iframe>
-        <iframe src="https://www.behance.net/embed/project/233840035" height="316" width="404" allowfullscreen frameborder="0"></iframe>
-        <iframe src="https://www.behance.net/embed/project/234459067" height="316" width="404" allowfullscreen frameborder="0"></iframe>
-        <iframe src="https://www.behance.net/embed/project/234459187" height="316" width="404" allowfullscreen frameborder="0"></iframe>
-        <iframe src="https://www.behance.net/embed/project/234451787" height="316" width="404" allowfullscreen frameborder="0"></iframe>
-        <iframe src="https://www.behance.net/embed/project/234451717" height="316" width="404" allowfullscreen frameborder="0"></iframe>
-        <iframe src="https://www.behance.net/embed/project/234451819" height="316" width="404" allowfullscreen frameborder="0"></iframe>6" width="404" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
-      </div>
-    </div>
-  </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-title">Photography</h1>
+        <p class="hero-subtitle">A curated collection of visual stories, captured through intentional composition and natural light.</p>
+    </section>
 
-  <!-- Videos Tab -->
-  <div id="videos" class="tab-content">
-    <div class="content-section">
-      <h1>Videos</h1>
-      <div class="videos">
-        <iframe src="https://player.vimeo.com/video/1117972398" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        <iframe src="https://player.vimeo.com/video/1117972254" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        <iframe src="https://player.vimeo.com/video/1097733804" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        <iframe src="https://player.vimeo.com/video/1097718082" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        <iframe src="https://player.vimeo.com/video/1041163275" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        <iframe src="https://player.vimeo.com/video/984471494" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        <iframe src="https://player.vimeo.com/video/924467659" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        <iframe src="https://player.vimeo.com/video/911067183" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        <iframe src="https://player.vimeo.com/video/911030224" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        <iframe src="https://player.vimeo.com/video/906707440" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        <iframe src="https://player.vimeo.com/video/898002243" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        <iframe src="https://player.vimeo.com/video/898150345" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
+    <!-- Gallery Section -->
+    <section class="gallery-container">
+        <div class="gallery-grid" id="galleryGrid">
+            
+            <!-- Example Project 1 - Replace with your Behance projects -->
+            <div class="gallery-item">
+                <div class="project-frame">
+                    <iframe 
+                        src="https://www.behance.net/embed/project/YOUR_PROJECT_ID_1" 
+                        height="340" 
+                        allowfullscreen 
+                        loading="lazy"
+                        title="Project Title 1">
+                    </iframe>
+                    <div class="project-info">
+                        <h3 class="project-title">Urban Perspectives</h3>
+                        <a href="https://www.behance.net/gallery/YOUR_PROJECT_ID_1" 
+                           target="_blank" 
+                           rel="noopener" 
+                           class="project-link">
+                            View Project
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-  <script src="https://player.vimeo.com/api/player.js"></script>
-  <script src="https://www.behance.net/static/js/embed.js"></script>
-  <script>
-    function showTab(tabName) {
-      // Hide all tabs
-      const tabs = document.querySelectorAll('.tab-content');
-      tabs.forEach(tab => tab.classList.remove('active'));
-      
-      // Remove active class from all nav links
-      const navLinks = document.querySelectorAll('.nav a');
-      navLinks.forEach(link => link.classList.remove('active'));
-      
-      // Show selected tab
-      document.getElementById(tabName).classList.add('active');
-      document.getElementById(tabName + '-tab').classList.add('active');
-    }
-  </script>
+            <!-- Example Project 2 -->
+            <div class="gallery-item">
+                <div class="project-frame">
+                    <iframe 
+                        src="https://www.behance.net/embed/project/YOUR_PROJECT_ID_2" 
+                        height="340" 
+                        allowfullscreen 
+                        loading="lazy"
+                        title="Project Title 2">
+                    </iframe>
+                    <div class="project-info">
+                        <h3 class="project-title">Natural Light Series</h3>
+                        <a href="https://www.behance.net/gallery/YOUR_PROJECT_ID_2" 
+                           target="_blank" 
+                           rel="noopener" 
+                           class="project-link">
+                            View Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example Project 3 -->
+            <div class="gallery-item">
+                <div class="project-frame">
+                    <iframe 
+                        src="https://www.behance.net/embed/project/YOUR_PROJECT_ID_3" 
+                        height="340" 
+                        allowfullscreen 
+                        loading="lazy"
+                        title="Project Title 3">
+                    </iframe>
+                    <div class="project-info">
+                        <h3 class="project-title">Portrait Studies</h3>
+                        <a href="https://www.behance.net/gallery/YOUR_PROJECT_ID_3" 
+                           target="_blank" 
+                           rel="noopener" 
+                           class="project-link">
+                            View Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example Project 4 -->
+            <div class="gallery-item">
+                <div class="project-frame">
+                    <iframe 
+                        src="https://www.behance.net/embed/project/YOUR_PROJECT_ID_4" 
+                        height="340" 
+                        allowfullscreen 
+                        loading="lazy"
+                        title="Project Title 4">
+                    </iframe>
+                    <div class="project-info">
+                        <h3 class="project-title">Architectural Forms</h3>
+                        <a href="https://www.behance.net/gallery/YOUR_PROJECT_ID_4" 
+                           target="_blank" 
+                           rel="noopener" 
+                           class="project-link">
+                            View Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more projects as needed -->
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">© 2024 Xavier Salih — All Rights Reserved</p>
+            <div class="social-links">
+                <a href="https://www.behance.net/waelsalih" target="_blank" rel="noopener">Behance</a>
+                <a href="https://github.com/xaviersalih" target="_blank" rel="noopener">GitHub</a>
+                <a href="mailto:your.email@example.com">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Scroll Progress Bar
+        const scrollProgress = document.getElementById('scrollProgress');
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercentage = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = scrollPercentage + '%';
+        });
+
+        // Lazy Load Optimization
+        const observerOptions = {
+            root: null,
+            rootMargin: '50px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'scale(1)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe gallery items
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add parallax effect on scroll (subtle)
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+                hero.style.opacity = 1 - (scrolled / 500);
+            }
+        });
+    </script>
 </body>
 </html>
-        
