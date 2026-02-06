@@ -137,15 +137,27 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=1920') center/cover no-repeat;
-      filter: brightness(0.3);
-      transform: scale(1.1);
-      animation: slowZoom 20s ease-in-out infinite alternate;
+      overflow: hidden;
     }
 
-    @keyframes slowZoom {
-      from { transform: scale(1.1); }
-      to { transform: scale(1.2); }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-bg iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 177.78vh;
+      height: 100vh;
+      min-width: 100%;
+      min-height: 56.25vw;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
     }
 
     .hero-content {
@@ -561,7 +573,14 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-bg"></div>
+    <div class="hero-bg">
+      <iframe 
+        src="https://player.vimeo.com/video/898002243?autoplay=1&loop=1&muted=1&background=1&quality=1080p" 
+        frameborder="0" 
+        allow="autoplay; fullscreen" 
+        title="Background Video">
+      </iframe>
+    </div>
     <div class="hero-content">
       <h1 class="hero-logo">Wael Salih</h1>
       <p class="hero-tagline">
@@ -662,7 +681,7 @@
   <!-- Contact Section -->
   <section class="contact-section" id="contact">
     <h2 class="contact-title reveal">Let's Work Together</h2>
-    <a href="mailto:hello@waelsalih.com" class="contact-btn reveal">Get In Touch</a>
+    <a href="/cdn-cgi/l/email-protection#0e666b6262614e796f6b627d6f626766206d6163" class="contact-btn reveal">Get In Touch</a>
   </section>
 
   <!-- Footer -->
@@ -682,7 +701,7 @@
     <img id="lightboxImg" src="" alt="Expanded photo">
   </div>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
