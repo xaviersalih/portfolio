@@ -20,8 +20,27 @@
   <main class="container">
     <section class="page-head">
       <h1>Photography</h1>
-      <p class="muted">This section has been moved to the main page.</p>
+      <p class="muted">Selected work — click any image to view.</p>
+    </section>
+
+    <section class="grid" id="photoGrid">
+      <!-- Replace with your thumbnails and full‑size photos -->
+      <button class="card" data-full="assets/photos/photo-01.jpg" aria-label="Open photo 1">
+        <img src="assets/thumbs/thumb-01.jpg" alt="Photo 1" loading="lazy" />
+      </button>
+      <button class="card" data-full="assets/photos/photo-02.jpg" aria-label="Open photo 2">
+        <img src="assets/thumbs/thumb-02.jpg" alt="Photo 2" loading="lazy" />
+      </button>
+      <!-- add more buttons as needed -->
     </section>
   </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+    <img id="lbImg" alt="Expanded photo" />
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
