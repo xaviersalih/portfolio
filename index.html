@@ -1,14 +1,27 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Help bust cached builds -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
   <title>Wael Salih | Photography & Film</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -19,7 +32,6 @@
       --bg-secondary: #111111;
       --text: #ffffff;
       --text-muted: #888888;
-      --accent: #ffffff;
       --overlay: rgba(0, 0, 0, 0.6);
       --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
@@ -29,7 +41,7 @@
     }
 
     body {
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -63,10 +75,12 @@
     }
 
     .logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem;
-      letter-spacing: 0.15em;
-      color: var(--text);
+      display: flex;
+      align-items: center;
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      font-size: 1.1rem;
     }
 
     .nav-links {
@@ -86,7 +100,7 @@
     }
 
     .nav-links a::after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: -6px;
       left: 0;
@@ -141,7 +155,7 @@
     }
 
     .hero-bg::after {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
       background: rgba(0, 0, 0, 0.5);
@@ -166,8 +180,8 @@
     }
 
     .hero-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3rem, 12vw, 8rem);
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(2rem, 8vw, 5rem);
       letter-spacing: 0.3em;
       margin-bottom: 1.5rem;
       opacity: 0;
@@ -175,19 +189,18 @@
     }
 
     .hero-tagline {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 300;
-      letter-spacing: 0.4em;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--text);
       opacity: 0;
       animation: fadeUp 1s ease 0.6s forwards;
     }
 
     .hero-tagline span {
       display: inline-block;
-      margin: 0 1rem;
-      color: var(--text-muted);
+      margin: 0 0.75rem;
     }
 
     .scroll-hint {
@@ -228,7 +241,7 @@
     }
 
     .section-title {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: "Bebas Neue", sans-serif;
       font-size: 0.9rem;
       letter-spacing: 0.5em;
       text-transform: uppercase;
@@ -276,7 +289,12 @@
     .portfolio-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0.3) 50%,
+        transparent 100%
+      );
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -290,7 +308,7 @@
     }
 
     .portfolio-title {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: "Bebas Neue", sans-serif;
       font-size: 1.4rem;
       letter-spacing: 0.1em;
       margin-bottom: 0.25rem;
@@ -315,17 +333,6 @@
       transform: translateY(0);
     }
 
-    /* Featured/Large Items */
-    .portfolio-item.large {
-      grid-column: span 2;
-      aspect-ratio: 16/9;
-    }
-
-    .portfolio-item.tall {
-      grid-row: span 2;
-      aspect-ratio: auto;
-    }
-
     /* Contact Section */
     .contact-section {
       text-align: center;
@@ -334,7 +341,7 @@
     }
 
     .contact-title {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: "Bebas Neue", sans-serif;
       font-size: clamp(2rem, 6vw, 4rem);
       letter-spacing: 0.2em;
       margin-bottom: 2rem;
@@ -359,7 +366,7 @@
     footer {
       padding: 3rem;
       text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .social-links {
@@ -430,7 +437,7 @@
       cursor: pointer;
       opacity: 0.6;
       transition: opacity var(--transition);
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       font-weight: 300;
       letter-spacing: 0.2em;
     }
@@ -452,8 +459,14 @@
     }
 
     @keyframes scrollPulse {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 1; }
+      0%,
+      100% {
+        opacity: 0.4;
+      }
+
+      50% {
+        opacity: 1;
+      }
     }
 
     /* Scroll Reveal */
@@ -473,12 +486,13 @@
       .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
       .portfolio-item.large {
         grid-column: span 2;
       }
-      .portfolio-item.tall {
-        grid-row: span 1;
-        aspect-ratio: 4/3;
+
+      section {
+        padding: 4rem 2rem;
       }
     }
 
@@ -532,39 +546,23 @@
         grid-template-columns: 1fr;
         gap: 1rem;
       }
-
-      .portfolio-item.large {
-        grid-column: span 1;
-      }
-
-      section {
-        padding: 4rem 1.5rem;
-      }
-
-      .hero-tagline span {
-        display: block;
-        margin: 0.5rem 0;
-      }
-
-      .social-links {
-        flex-wrap: wrap;
-        gap: 1.5rem;
-      }
     }
   </style>
 </head>
-<body>
 
+<body>
   <!-- Navigation -->
   <nav class="navbar">
     <a href="index.html" class="logo">Wael Salih</a>
+
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="#work">Photography</a></li>
       <li><a href="videos.html">Videos</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <div class="menu-toggle">
+
+    <div class="menu-toggle" aria-label="Toggle navigation" role="button" tabindex="0">
       <span></span>
       <span></span>
       <span></span>
@@ -574,19 +572,19 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-bg">
-      <iframe 
-        src="https://player.vimeo.com/video/898002243?autoplay=1&loop=1&muted=1&background=1&quality=1080p" 
-        frameborder="0" 
-        allow="autoplay; fullscreen" 
-        title="Background Video">
-      </iframe>
+      <iframe
+        src="https://player.vimeo.com/video/898002243?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+        title="Background Video"
+      ></iframe>
     </div>
+
     <div class="hero-content">
       <h1 class="hero-logo">Wael Salih</h1>
-      <p class="hero-tagline">
-        Photography <span>&</span> Film
-      </p>
+      <p class="hero-tagline">Photographer <span>-</span> Videographer <span>-</span> Editor</p>
     </div>
+
     <div class="scroll-hint">
       <span>Scroll</span>
       <div class="scroll-line"></div>
@@ -601,172 +599,137 @@
     </div>
 
     <div class="portfolio-grid">
-      <!-- Replace these with your actual photos -->
-      
-      <div class="portfolio-item large reveal">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200" alt="Mountain Landscape" loading="lazy">
-        <div class="portfolio-overlay">
-          <h3 class="portfolio-title">Mountain Series</h3>
-          <span class="portfolio-category">Landscape Photography</span>
-        </div>
-      </div>
-
       <div class="portfolio-item reveal">
-        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800" alt="Nature" loading="lazy">
-        <div class="portfolio-overlay">
-          <h3 class="portfolio-title">Into The Wild</h3>
-          <span class="portfolio-category">Nature</span>
-        </div>
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/bfcc67233839839.68b75f29566e8.jpg" alt="Photography" loading="lazy" />
       </div>
-
       <div class="portfolio-item reveal">
-        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800" alt="Lake Reflection" loading="lazy">
-        <div class="portfolio-overlay">
-          <h3 class="portfolio-title">Reflections</h3>
-          <span class="portfolio-category">Landscape</span>
-        </div>
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/128a5b233839871.68b75f53c9bab.jpg" alt="Photography" loading="lazy" />
       </div>
-
       <div class="portfolio-item reveal">
-        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800" alt="Foggy Mountains" loading="lazy">
-        <div class="portfolio-overlay">
-          <h3 class="portfolio-title">Misty Dawn</h3>
-          <span class="portfolio-category">Landscape</span>
-        </div>
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/dcf051233839901.68b75f710b79e.jpg" alt="Photography" loading="lazy" />
       </div>
-
       <div class="portfolio-item reveal">
-        <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800" alt="Forest Path" loading="lazy">
-        <div class="portfolio-overlay">
-          <h3 class="portfolio-title">Forest Tales</h3>
-          <span class="portfolio-category">Nature</span>
-        </div>
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/b1ef03233839949.68b75fa17310f.jpg" alt="Photography" loading="lazy" />
       </div>
-
-      <div class="portfolio-item large reveal">
-        <img src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=1200" alt="Waterfall" loading="lazy">
-        <div class="portfolio-overlay">
-          <h3 class="portfolio-title">Cascade</h3>
-          <span class="portfolio-category">Landscape Photography</span>
-        </div>
-      </div>
-
       <div class="portfolio-item reveal">
-        <img src="https://images.unsplash.com/photo-1518173946687-a4c036bc6c9f?w=800" alt="Desert" loading="lazy">
-        <div class="portfolio-overlay">
-          <h3 class="portfolio-title">Desert Dreams</h3>
-          <span class="portfolio-category">Travel</span>
-        </div>
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/1140cc233839969.68b75fbdef7e3.jpg" alt="Photography" loading="lazy" />
       </div>
-
       <div class="portfolio-item reveal">
-        <img src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=800" alt="Ocean" loading="lazy">
-        <div class="portfolio-overlay">
-          <h3 class="portfolio-title">Coastal</h3>
-          <span class="portfolio-category">Seascape</span>
-        </div>
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/e9e3ac233840005.68b75fea394d8.jpg" alt="Photography" loading="lazy" />
       </div>
-
       <div class="portfolio-item reveal">
-        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800" alt="Peaks" loading="lazy">
-        <div class="portfolio-overlay">
-          <h3 class="portfolio-title">Alpine</h3>
-          <span class="portfolio-category">Mountains</span>
-        </div>
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/80aaea233840035.68b7601901368.jpg" alt="Photography" loading="lazy" />
       </div>
-
+      <div class="portfolio-item reveal">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/1d4f58234459067.Y3JvcCwxNTQ5LDEyMTIsNjYzLDA.png" alt="Photography" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/9d6978234459187.Y3JvcCwyMDc4LDE2MjYsMTQ5LDA.png" alt="Photography" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/a6cd17234451787.Y3JvcCw0NDkyLDM1MTMsMCw1Njc.jpeg" alt="Photography" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/2f2c13234451717.Y3JvcCwxMTg2LDkyOCwxMDUsMA.jpeg" alt="Photography" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/39e2d4234451819.Y3JvcCw1NzQyLDQ0OTIsNTExLDA.jpeg" alt="Photography" loading="lazy" />
+      </div>
     </div>
   </section>
 
   <!-- Contact Section -->
   <section class="contact-section" id="contact">
     <h2 class="contact-title reveal">Let's Work Together</h2>
-    <a href="/cdn-cgi/l/email-protection#0e666b6262614e796f6b627d6f626766206d6163" class="contact-btn reveal">Get In Touch</a>
+    <a href="/cdn-cgi/l/email-protection#5c34393030331c2b3d39302f3d303534723f3331" class="contact-btn reveal">Get In Touch</a>
   </section>
 
   <!-- Footer -->
   <footer>
     <div class="social-links">
-      <a href="https://www.behance.net/waelsalih" target="_blank">Behance</a>
-      <a href="#" target="_blank">Instagram</a>
-      <a href="#" target="_blank">Vimeo</a>
-      <a href="#" target="_blank">LinkedIn</a>
+      <a href="https://www.behance.net/waelsalih" target="_blank" rel="noreferrer">Behance</a>
+      <a href="#" target="_blank" rel="noreferrer">Instagram</a>
+      <a href="#" target="_blank" rel="noreferrer">Vimeo</a>
+      <a href="#" target="_blank" rel="noreferrer">LinkedIn</a>
     </div>
-    <p class="copyright">© 2025 Wael Salih. All Rights Reserved.</p>
+    <p class="copyright">© 2026 Wael Salih. All Rights Reserved.</p>
   </footer>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
-    <button class="lightbox-close">Close</button>
-    <img id="lightboxImg" src="" alt="Expanded photo">
+    <button class="lightbox-close" aria-label="Close">Close</button>
+    <img id="lightboxImg" src="" alt="Expanded photo" />
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script>
     // Navbar scroll effect
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 100);
+    const navbar = document.querySelector(".navbar");
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 100);
     });
 
     // Mobile menu toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
 
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('active');
-      navLinks.classList.toggle('active');
+    const toggleMenu = () => {
+      menuToggle.classList.toggle("active");
+      navLinks.classList.toggle("active");
+    };
+
+    menuToggle.addEventListener("click", toggleMenu);
+    menuToggle.addEventListener("keypress", (e) => {
+      if (e.key === "Enter" || e.key === " ") toggleMenu();
     });
 
     // Close menu on link click
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menuToggle.classList.remove("active");
+        navLinks.classList.remove("active");
       });
     });
 
     // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
 
-    document.querySelectorAll('.portfolio-item').forEach(item => {
-      item.addEventListener('click', () => {
-        const img = item.querySelector('img');
-        lightboxImg.src = img.src.replace('w=800', 'w=1600').replace('w=1200', 'w=1920');
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
+    document.querySelectorAll(".portfolio-item").forEach((item) => {
+      item.addEventListener("click", () => {
+        const img = item.querySelector("img");
+        lightboxImg.src = img.src;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
       });
     });
 
-    lightbox.addEventListener('click', () => {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
-    });
+    const closeLightbox = () => {
+      lightbox.classList.remove("active");
+      document.body.style.overflow = "";
+    };
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-      }
+    lightbox.addEventListener("click", closeLightbox);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox();
     });
 
     // Scroll reveal
-    const revealElements = document.querySelectorAll('.reveal');
+    const revealElements = document.querySelectorAll(".reveal");
 
     const revealOnScroll = () => {
       revealElements.forEach((el, index) => {
         const rect = el.getBoundingClientRect();
         if (rect.top < window.innerHeight - 100) {
           setTimeout(() => {
-            el.classList.add('visible');
+            el.classList.add("visible");
           }, index * 50);
         }
       });
     };
 
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('load', revealOnScroll);
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
   </script>
-
 </body>
 </html>
