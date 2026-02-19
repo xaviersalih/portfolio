@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
 
-  <title>Videos | Wael Salih</title>
+  <title>Wael Salih | Photography & Film</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -66,11 +66,11 @@
       justify-content: space-between;
       align-items: center;
       transition: background var(--transition), padding var(--transition);
-      background: rgba(10, 10, 10, 0.95);
-      backdrop-filter: blur(10px);
     }
 
     .navbar.scrolled {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
       padding: 1rem 3rem;
     }
 
@@ -136,98 +136,230 @@
       transition: var(--transition);
     }
 
-    /* Page Header */
-    .page-header {
-      padding-top: 140px;
-      padding-bottom: 4rem;
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    .page-title {
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .hero-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-bg iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 177.78vh;
+      height: 100vh;
+      min-width: 100%;
+      min-height: 56.25vw;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-logo {
       font-family: "Bebas Neue", sans-serif;
-      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-size: clamp(2rem, 8vw, 5rem);
       letter-spacing: 0.3em;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       opacity: 0;
-      animation: fadeUp 1s ease 0.2s forwards;
+      animation: fadeUp 1s ease 0.3s forwards;
     }
 
-    .page-subtitle {
+    .hero-tagline {
       font-size: 0.85rem;
       font-weight: 300;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--text);
       opacity: 0;
-      animation: fadeUp 1s ease 0.4s forwards;
+      animation: fadeUp 1s ease 0.6s forwards;
     }
 
-    /* Videos Section */
-    .videos-section {
-      padding: 2rem 3rem 6rem;
+    .hero-tagline span {
+      display: inline-block;
+      margin: 0 0.75rem;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.9s forwards;
+    }
+
+    .scroll-hint span {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--text-muted), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* Section Styles */
+    section {
+      padding: 6rem 3rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .section-line {
+      width: 40px;
+      height: 1px;
+      background: var(--text);
+      margin: 0 auto;
+    }
+
+    /* Portfolio Grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
       max-width: 1400px;
       margin: 0 auto;
     }
 
-    .video-grid {
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      background: var(--bg-secondary);
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease, filter 0.6s ease;
+      filter: grayscale(30%);
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.08);
+      filter: grayscale(0%);
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0.3) 50%,
+        transparent 100%
+      );
       display: flex;
       flex-direction: column;
-      gap: 4rem;
-    }
-
-    .video-item {
-      width: 100%;
+      justify-content: flex-end;
+      padding: 1.5rem;
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transition: opacity var(--transition);
     }
 
-    .video-item.visible {
+    .portfolio-item:hover .portfolio-overlay {
       opacity: 1;
+    }
+
+    .portfolio-title {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.25rem;
+      transform: translateY(20px);
+      transition: transform var(--transition);
+    }
+
+    .portfolio-item:hover .portfolio-title {
       transform: translateY(0);
     }
 
-    .video-wrapper {
-      position: relative;
-      width: 100%;
-      background: var(--bg-secondary);
-      overflow: hidden;
-    }
-
-    /* Aspect ratio containers */
-    .video-wrapper.ratio-2391 {
-      padding-top: 41.89%; /* 2.391:1 aspect ratio */
-    }
-
-    .video-wrapper.ratio-1896 {
-      padding-top: 52.73%; /* 1.896:1 aspect ratio */
-    }
-
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .video-info {
-      padding: 1.5rem 0;
-    }
-
-    .video-title {
-      font-family: "Bebas Neue", sans-serif;
-      font-size: 1.5rem;
-      letter-spacing: 0.15em;
-      margin-bottom: 0.25rem;
-    }
-
-    .video-category {
-      font-size: 0.75rem;
+    .portfolio-category {
+      font-size: 0.7rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--text-muted);
+      transform: translateY(20px);
+      transition: transform var(--transition) 0.05s;
+    }
+
+    .portfolio-item:hover .portfolio-category {
+      transform: translateY(0);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      text-align: center;
+      padding: 8rem 3rem;
+      background: var(--bg-secondary);
+    }
+
+    .contact-title {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      letter-spacing: 0.2em;
+      margin-bottom: 2rem;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      padding: 1rem 3rem;
+      border: 1px solid var(--text);
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .contact-btn:hover {
+      background: var(--text);
+      color: var(--bg);
     }
 
     /* Footer */
@@ -262,6 +394,58 @@
       letter-spacing: 0.1em;
     }
 
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.97);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      cursor: zoom-out;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      transform: scale(0.95);
+      transition: transform 0.4s ease;
+    }
+
+    .lightbox.active img {
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity var(--transition);
+      font-family: "Montserrat", sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+    }
+
+    .lightbox-close:hover {
+      opacity: 1;
+    }
+
     /* Animations */
     @keyframes fadeUp {
       from {
@@ -274,10 +458,41 @@
       }
     }
 
+    @keyframes scrollPulse {
+      0%,
+      100% {
+        opacity: 0.4;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* Responsive */
     @media (max-width: 1024px) {
-      .videos-section {
-        padding: 2rem 2rem 4rem;
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .portfolio-item.large {
+        grid-column: span 2;
+      }
+
+      section {
+        padding: 4rem 2rem;
       }
     }
 
@@ -327,22 +542,9 @@
         transform: rotate(-45deg) translate(4px, -4px);
       }
 
-      .videos-section {
-        padding: 2rem 1.5rem 4rem;
-      }
-
-      .video-grid {
-        gap: 3rem;
-      }
-
-      .page-header {
-        padding-top: 120px;
-        padding-bottom: 2rem;
-      }
-
-      .social-links {
-        flex-wrap: wrap;
-        gap: 1.5rem;
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
       }
     }
   </style>
@@ -354,10 +556,10 @@
     <a href="index.html" class="logo">Wael Salih</a>
 
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#work">Photography</a></li>
-      <li><a href="videos.html" class="active">Videos</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="#work">Photography</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
 
     <div class="menu-toggle" aria-label="Toggle navigation" role="button" tabindex="0">
@@ -367,102 +569,79 @@
     </div>
   </nav>
 
-  <!-- Page Header -->
-  <header class="page-header">
-    <h1 class="page-title">Videos</h1>
-    <p class="page-subtitle">Selected Film Work</p>
-  </header>
-
-  <!-- Videos Section -->
-  <section class="videos-section">
-    <div class="video-grid">
-
-      <!-- Video 1: BSTLAND -->
-      <div class="video-item">
-        <div class="video-wrapper ratio-2391">
-          <iframe 
-            src="https://player.vimeo.com/video/1117972398?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1" 
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin"
-            title="BSTLAND - Yotwarit Kornwoodtikun">
-          </iframe>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">BSTLAND</h3>
-          <span class="video-category">Yotwarit Kornwoodtikun</span>
-        </div>
-      </div>
-
-      <!-- Video 2: Soiree -->
-      <div class="video-item">
-        <div class="video-wrapper ratio-2391">
-          <iframe 
-            src="https://player.vimeo.com/video/924467659?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1" 
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin"
-            title="Soiree">
-          </iframe>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Soiree</h3>
-          <span class="video-category">Short Film</span>
-        </div>
-      </div>
-
-      <!-- Video 3: Lydia Thomas -->
-      <div class="video-item">
-        <div class="video-wrapper ratio-1896">
-          <iframe 
-            src="https://player.vimeo.com/video/984471494?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1" 
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin"
-            title="Lydia Thomas">
-          </iframe>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Lydia Thomas</h3>
-          <span class="video-category">Portrait</span>
-        </div>
-      </div>
-
-      <!-- Video 4: Origin Coffee Lab & Kitchen -->
-      <div class="video-item">
-        <div class="video-wrapper ratio-2391">
-          <iframe 
-            src="https://player.vimeo.com/video/1041163275?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1" 
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin"
-            title="Origin Coffee Lab & Kitchen">
-          </iframe>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Origin Coffee Lab & Kitchen</h3>
-          <span class="video-category">Commercial</span>
-        </div>
-      </div>
-
-      <!-- Video 5: Case Study 3 -->
-      <div class="video-item">
-        <div class="video-wrapper ratio-2391">
-          <iframe 
-            src="https://player.vimeo.com/video/898153724?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1" 
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin"
-            title="Case Study: 3">
-          </iframe>
-        </div>
-        <div class="video-info">
-          <h3 class="video-title">Case Study: 3</h3>
-          <span class="video-category">Documentary</span>
-        </div>
-      </div>
-
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg">
+      <iframe
+        src="https://player.vimeo.com/video/898002243?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+        title="Background Video"
+      ></iframe>
     </div>
+
+    <div class="hero-content">
+      <h1 class="hero-logo">Wael Salih</h1>
+      <p class="hero-tagline">Photographer <span>-</span> Videographer <span>-</span> Editor</p>
+    </div>
+
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Selected Works -->
+  <section id="work">
+    <div class="section-header reveal">
+      <h2 class="section-title">Selected Works</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="portfolio-grid">
+      <div class="portfolio-item reveal">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/bfcc67233839839.68b75f29566e8.jpg" alt="Photography" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/128a5b233839871.68b75f53c9bab.jpg" alt="Photography" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/dcf051233839901.68b75f710b79e.jpg" alt="Photography" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/b1ef03233839949.68b75fa17310f.jpg" alt="Photography" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/1140cc233839969.68b75fbdef7e3.jpg" alt="Photography" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/e9e3ac233840005.68b75fea394d8.jpg" alt="Photography" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/80aaea233840035.68b7601901368.jpg" alt="Photography" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/1d4f58234459067.Y3JvcCwxNTQ5LDEyMTIsNjYzLDA.png" alt="Photography" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/9d6978234459187.Y3JvcCwyMDc4LDE2MjYsMTQ5LDA.png" alt="Photography" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/a6cd17234451787.Y3JvcCw0NDkyLDM1MTMsMCw1Njc.jpeg" alt="Photography" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/2f2c13234451717.Y3JvcCwxMTg2LDkyOCwxMDUsMA.jpeg" alt="Photography" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/39e2d4234451819.Y3JvcCw1NzQyLDQ0OTIsNTExLDA.jpeg" alt="Photography" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <h2 class="contact-title reveal">Let's Work Together</h2>
+    <a href="/cdn-cgi/l/email-protection#5c34393030331c2b3d39302f3d303534723f3331" class="contact-btn reveal">Get In Touch</a>
   </section>
 
   <!-- Footer -->
@@ -476,12 +655,18 @@
     <p class="copyright">© 2026 Wael Salih. All Rights Reserved.</p>
   </footer>
 
-  <script src="https://player.vimeo.com/api/player.js"></script>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">Close</button>
+    <img id="lightboxImg" src="" alt="Expanded photo" />
+  </div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script>
     // Navbar scroll effect
     const navbar = document.querySelector(".navbar");
     window.addEventListener("scroll", () => {
-      navbar.classList.toggle("scrolled", window.scrollY > 50);
+      navbar.classList.toggle("scrolled", window.scrollY > 100);
     });
 
     // Mobile menu toggle
@@ -506,16 +691,39 @@
       });
     });
 
-    // Scroll reveal for videos
-    const videoItems = document.querySelectorAll(".video-item");
+    // Lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+
+    document.querySelectorAll(".portfolio-item").forEach((item) => {
+      item.addEventListener("click", () => {
+        const img = item.querySelector("img");
+        lightboxImg.src = img.src;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    const closeLightbox = () => {
+      lightbox.classList.remove("active");
+      document.body.style.overflow = "";
+    };
+
+    lightbox.addEventListener("click", closeLightbox);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox();
+    });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll(".reveal");
 
     const revealOnScroll = () => {
-      videoItems.forEach((item, index) => {
-        const rect = item.getBoundingClientRect();
+      revealElements.forEach((el, index) => {
+        const rect = el.getBoundingClientRect();
         if (rect.top < window.innerHeight - 100) {
           setTimeout(() => {
-            item.classList.add("visible");
-          }, index * 150);
+            el.classList.add("visible");
+          }, index * 50);
         }
       });
     };
@@ -523,6 +731,5 @@
     window.addEventListener("scroll", revealOnScroll);
     window.addEventListener("load", revealOnScroll);
   </script>
-
 </body>
 </html>
