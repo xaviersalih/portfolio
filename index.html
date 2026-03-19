@@ -13,52 +13,38 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500&display=swap"
     rel="stylesheet"
   />
 
   <style>
-    :root {
-      --bg: #0a0b0e;
-      --panel: rgba(255, 255, 255, 0.04);
-      --panel2: rgba(255, 255, 255, 0.06);
-      --border: rgba(255, 255, 255, 0.12);
-      --text: rgba(255, 255, 255, 0.92);
-      --muted: rgba(255, 255, 255, 0.72);
-      --faint: rgba(255, 255, 255, 0.56);
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
-      --shadow2: 0 18px 60px rgba(0, 0, 0, 0.45);
-      --radius: 18px;
-      --radius2: 14px;
-      --accent1: rgba(255, 255, 255, 0.18);
-      --accent2: rgba(255, 255, 255, 0.12);
-      --selection: rgba(255, 255, 255, 0.15);
-
-      --year1: rgba(255, 255, 255, 0.92);
-      --year2: rgba(255, 255, 255, 0.74);
-      --year3: rgba(255, 255, 255, 0.56);
-
-      --blend1: rgba(255, 255, 255, 0.35);
-      --blend2: rgba(255, 255, 255, 0.2);
-    }
-
-    * {
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
-    html,
-    body {
-      height: 100%;
+    :root {
+      --bg: #0a0a0a;
+      --bg-secondary: #111111;
+      --text: #ffffff;
+      --text-muted: #888888;
+      --overlay: rgba(0, 0, 0, 0.6);
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      margin: 0;
-      background: radial-gradient(1200px 700px at 10% 0%, rgba(50, 90, 255, 0.14), transparent 55%),
-        radial-gradient(900px 650px at 90% 10%, rgba(255, 70, 180, 0.12), transparent 55%),
-        radial-gradient(1100px 800px at 20% 100%, rgba(0, 255, 200, 0.08), transparent 55%),
-        linear-gradient(180deg, #080a0f, #06070b);
+      font-family: "Montserrat", sans-serif;
+      background-color: var(--bg);
       color: var(--text);
-      font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.6;
+      font-weight: 300;
       overflow-x: hidden;
     }
 
@@ -67,743 +53,683 @@
       text-decoration: none;
     }
 
-    /* subtle scanline / film texture */
-    .noise {
+    /* Navigation */
+    .navbar {
       position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.16;
-      mix-blend-mode: overlay;
-      background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="140" height="140" filter="url(%23n)" opacity="0.4"/%3E%3C/svg%3E');
-    }
-
-    .topbar {
-      position: sticky;
       top: 0;
-      z-index: 50;
-      background: linear-gradient(180deg, rgba(10, 11, 14, 0.86), rgba(10, 11, 14, 0.46));
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .topbar-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 14px 20px;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.5rem 3rem;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      align-items: center;
+      transition: background var(--transition), padding var(--transition);
     }
 
-    .brand {
+    .navbar.scrolled {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 3rem;
+    }
+
+    .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
-      min-width: 220px;
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      font-size: 1.1rem;
     }
 
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.06));
-      box-shadow: 0 14px 45px rgba(0, 0, 0, 0.45);
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color var(--transition);
       position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    .brand-mark::before {
-      content: '';
+    .nav-links a::after {
+      content: "";
       position: absolute;
-      inset: -30% 10% auto;
-      height: 140%;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0));
-      transform: rotate(20deg);
-      opacity: 0.45;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--text);
+      transition: width var(--transition);
     }
 
-    .brand-text {
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 1px;
+      background: var(--text);
+      transition: var(--transition);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
       display: flex;
       flex-direction: column;
-      line-height: 1.05;
-    }
-
-    .brand-text strong {
-      font-family: 'Bebas Neue', system-ui, sans-serif;
-      letter-spacing: 0.06em;
-      font-size: 22px;
-      font-weight: 600;
-    }
-
-    .brand-text span {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      flex: 1;
       justify-content: center;
-    }
-
-    .nav a {
-      padding: 9px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.82);
-      border: 1px solid transparent;
-    }
-
-    .nav a:hover {
-      background: rgba(255, 255, 255, 0.09);
-      border-color: rgba(255, 255, 255, 0.16);
-    }
-
-    .nav .active {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.06));
-      border-color: rgba(255, 255, 255, 0.18);
-    }
-
-    .cta-row {
-      display: flex;
       align-items: center;
-      gap: 10px;
-      min-width: 230px;
-      justify-content: flex-end;
-    }
-
-    .btn {
-      padding: 10px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: rgba(255, 255, 255, 0.06);
-      color: rgba(255, 255, 255, 0.86);
-      cursor: pointer;
-      backdrop-filter: blur(8px);
-    }
-
-    .btn:hover {
-      background: rgba(255, 255, 255, 0.09);
-      border-color: rgba(255, 255, 255, 0.22);
-    }
-
-    .btn-primary {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.06));
-      border-color: rgba(255, 255, 255, 0.2);
-      color: rgba(12, 13, 16, 0.9);
-      font-weight: 650;
-    }
-
-    .btn-primary:hover {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.08));
-      border-color: rgba(255, 255, 255, 0.24);
-    }
-
-    .wrap {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 22px 20px 70px;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.12fr 0.88fr;
-      gap: 18px;
-      align-items: stretch;
-      margin-top: 12px;
-    }
-
-    .panel {
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, var(--panel), rgba(255, 255, 255, 0.02));
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      overflow: hidden;
+      text-align: center;
       position: relative;
+      overflow: hidden;
     }
 
-    .panel::before {
-      content: '';
+    .hero-bg {
       position: absolute;
-      inset: -40% -40% auto auto;
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(closest-side, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
-      filter: blur(0.2px);
-      opacity: 0.85;
-      pointer-events: none;
-      transform: rotate(-20deg);
+      inset: 0;
+      overflow: hidden;
     }
 
-    .panel::after {
-      content: '';
+    .hero-bg::after {
+      content: "";
       position: absolute;
-      inset: auto auto -45% -30%;
-      width: 360px;
-      height: 360px;
-      background: radial-gradient(closest-side, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-      pointer-events: none;
-      opacity: 0.7;
-      filter: blur(0.3px);
-      transform: rotate(18deg);
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
     }
 
-    .section-head {
-      padding: 18px 18px 0;
+    .hero-bg iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 177.78vh;
+      height: 100vh;
+      min-width: 100%;
+      min-height: 56.25vw;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-logo {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(2rem, 8vw, 5rem);
+      letter-spacing: 0.3em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.3s forwards;
+    }
+
+    .hero-tagline {
+      font-size: 0.85rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text);
+      opacity: 0;
+      animation: fadeUp 1s ease 0.6s forwards;
+    }
+
+    .hero-tagline span {
+      display: inline-block;
+      margin: 0 0.75rem;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 12px;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.9s forwards;
+    }
+
+    .scroll-hint span {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--text-muted), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* Section Styles */
+    section {
+      padding: 6rem 3rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
     }
 
     .section-title {
-      font-family: 'Bebas Neue', system-ui, sans-serif;
-      letter-spacing: 0.06em;
-      font-size: 28px;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
     }
 
-    .section-subtitle {
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.68);
+    .section-line {
+      width: 40px;
+      height: 1px;
+      background: var(--text);
+      margin: 0 auto;
     }
 
-    .gallery {
-      padding: 14px 14px 18px;
+    /* Portfolio Grid */
+    .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      align-items: start;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
     }
 
     .portfolio-item {
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-      box-shadow: 0 16px 60px rgba(0, 0, 0, 0.45);
-      overflow: hidden;
       position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      background: var(--bg-secondary);
+    }
+
+    .portfolio-item.portrait {
+      aspect-ratio: 3/4;
     }
 
     .portfolio-item img {
       width: 100%;
-      height: 205px;
+      height: 100%;
       object-fit: cover;
-      display: block;
       transition: transform 0.6s ease, filter 0.6s ease;
       filter: grayscale(30%);
     }
 
     .portfolio-item:hover img {
-      transform: scale(1.03);
+      transform: scale(1.08);
       filter: grayscale(0%);
     }
 
-    .portfolio-meta {
-      margin-top: 12px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .portfolio-meta h3 {
-      margin: 0;
-      font-family: 'Bebas Neue', system-ui, sans-serif;
-      letter-spacing: 0.06em;
-      font-size: 26px;
-      line-height: 1.02;
-    }
-
-    .portfolio-meta span {
-      font-size: 13px;
-      color: var(--faint);
-    }
-
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .about-card {
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: var(--shadow2);
-      padding: 18px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .about-card::before {
-      content: '';
+    .portfolio-overlay {
       position: absolute;
       inset: 0;
-      opacity: 0.16;
-      mix-blend-mode: overlay;
-      pointer-events: none;
-      background: radial-gradient(700px 350px at 10% 0%, rgba(255, 255, 255, 0.12), transparent 60%),
-        radial-gradient(500px 300px at 90% 10%, rgba(255, 255, 255, 0.07), transparent 60%);
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0.3) 50%,
+        transparent 100%
+      );
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity var(--transition);
     }
 
-    .about-card h2 {
-      margin: 0 0 8px;
-      font-family: 'Bebas Neue', system-ui, sans-serif;
-      letter-spacing: 0.06em;
-      font-size: 32px;
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
     }
 
-    .about-card p {
-      margin: 10px 0 0;
-      font-size: 14px;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.78);
+    /* Contact Section */
+    .contact-section {
+      text-align: center;
+      padding: 8rem 3rem;
+      background: var(--bg-secondary);
     }
 
-    .stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 14px;
+    .contact-title {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: 0.15em;
+      margin-bottom: 2rem;
     }
 
-    .stat {
-      padding: 14px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 16px;
-      color: rgba(255, 255, 255, 0.92);
-    }
-
-    .stat span {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.72);
-      margin-top: 3px;
+    .contact-btn {
       display: inline-block;
+      padding: 1rem 3rem;
+      border: 1px solid var(--text);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: background var(--transition), color var(--transition);
     }
 
-    .footer {
-      margin-top: 24px;
-      padding: 18px 20px 40px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
-      border-radius: var(--radius);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: var(--shadow2);
+    .contact-btn:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+
+    .social-links a:hover {
+      color: var(--text);
+    }
+
+    .copyright {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 2000;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition), visibility var(--transition);
     }
 
-    .footer-links {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      color: rgba(255, 255, 255, 0.78);
-      font-size: 13px;
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
     }
 
-    .footer-links a {
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      background: rgba(255, 255, 255, 0.04);
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90vh;
+      object-fit: contain;
+      transform: scale(0.9);
+      transition: transform var(--transition);
     }
 
-    .footer-links a:hover {
-      background: rgba(255, 255, 255, 0.07);
-      border-color: rgba(255, 255, 255, 0.14);
+    .lightbox.active img {
+      transform: scale(1);
     }
 
-    .watermark {
-      color: rgba(255, 255, 255, 0.62);
-      font-size: 12px;
+    .lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity var(--transition);
+      font-family: "Montserrat", sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.2em;
     }
 
-    @media (max-width: 980px) {
-      .hero {
+    .lightbox-close:hover {
+      opacity: 1;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scrollPulse {
+      0%,
+      100% {
+        opacity: 0.4;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      section {
+        padding: 4rem 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1.25rem 1.5rem;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--bg);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition), visibility var(--transition);
+      }
+
+      .nav-links.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav-links a {
+        font-size: 1rem;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+      }
+
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+      }
+
+      .portfolio-grid {
         grid-template-columns: 1fr;
-      }
-
-      .nav {
-        display: none;
-      }
-
-      .brand {
-        min-width: 0;
-      }
-
-      .cta-row {
-        min-width: 0;
-      }
-    }
-
-    @media (max-width: 680px) {
-      .title {
-        font-size: 46px;
-      }
-
-      .about {
-        grid-template-columns: 1fr;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
+        gap: 1rem;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="noise"></div>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">Wael Salih</a>
 
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="/">
-        <div class="brand-mark"></div>
-        <div class="brand-text">
-          <strong>WAEL SALIH</strong>
-          <span>Photography & Film</span>
-        </div>
-      </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="#work">Photography</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
 
-      <nav class="nav" aria-label="Primary">
-        <a class="active" href="/">Photography</a>
-        <a href="/videos.html">Film</a>
-        <a href="#about">About</a>
-        <a href="mailto:wsalih@vt.edu">Contact</a>
-      </nav>
+    <div class="menu-toggle" aria-label="Toggle navigation" role="button" tabindex="0">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
 
-      <div class="cta-row">
-        <a class="btn" href="mailto:wsalih@vt.edu">Email</a>
-        <a class="btn btn-primary" href="/videos.html">View Film</a>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg">
+      <iframe
+        src="https://player.vimeo.com/video/898002243?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+        title="Background Video"
+      ></iframe>
+    </div>
+
+    <div class="hero-content">
+      <h1 class="hero-logo">Wael Salih</h1>
+      <p class="hero-tagline">Photographer <span>·</span> Videographer <span>·</span> Editor</p>
+    </div>
+
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Selected Works -->
+  <section id="work">
+    <div class="section-header reveal">
+      <h2 class="section-title">Selected Works</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="portfolio-grid">
+      <!-- Peru Series -->
+      <div class="portfolio-item portrait reveal">
+        <img src="images/6.jpg" alt="Portrait - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item portrait reveal">
+        <img src="images/2.jpg" alt="River Scene - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="images/12.jpg" alt="River Boat - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="images/10.JPG" alt="Street Market - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="images/11.JPG" alt="Street Scene - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="images/7.JPG" alt="Abstract Water - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="images/8.JPG" alt="Lake Swimming - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="images/9.JPG" alt="Swimming - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="images/26.JPG" alt="Mountains - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item portrait reveal">
+        <img src="images/16.JPG" alt="Waterfall - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="images/19.JPG" alt="Textile Hands - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item portrait reveal">
+        <img src="images/17.jpeg" alt="Waterfall Swim - Peru" loading="lazy" />
+      </div>
+      
+      <!-- DC / Street Series -->
+      <div class="portfolio-item reveal">
+        <img src="images/13.jpg" alt="Street Documentary - DC" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="images/14.jpg" alt="Street Documentary - DC" loading="lazy" />
+      </div>
+      <div class="portfolio-item portrait reveal">
+        <img src="images/11680010.jpg" alt="Street Documentary" loading="lazy" />
+      </div>
+      
+      <!-- Night / Event Series -->
+      <div class="portfolio-item reveal">
+        <img src="images/13180044.jpg" alt="Concert" loading="lazy" />
+      </div>
+      <div class="portfolio-item portrait reveal">
+        <img src="images/IMG_6212.jpg" alt="Night Scene" loading="lazy" />
+      </div>
+      <div class="portfolio-item portrait reveal">
+        <img src="images/11680022.jpg" alt="Night Market" loading="lazy" />
+      </div>
+      <div class="portfolio-item portrait reveal">
+        <img src="images/11680016.jpg" alt="Portrait" loading="lazy" />
+      </div>
+      <div class="portfolio-item portrait reveal">
+        <img src="images/11680032.jpg" alt="Neon Lights" loading="lazy" />
       </div>
     </div>
-  </header>
+  </section>
 
-  <main class="wrap">
-    <section class="hero">
-      <div class="panel" style="padding: 22px;">
-        <div class="eyebrow">PHOTOGRAPHY & VISUAL STORYTELLING</div>
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <h2 class="contact-title reveal">Let's Work Together</h2>
+    <a href="mailto:hello@waelsalih.com" class="contact-btn reveal">Get In Touch</a>
+  </section>
 
-        <h1 class="title">
-          Film-inspired stills.
-          <br />
-          Modern storytelling.
-        </h1>
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="https://www.behance.net/waelsalih" target="_blank" rel="noreferrer">Behance</a>
+      <a href="#" target="_blank" rel="noreferrer">Instagram</a>
+      <a href="#" target="_blank" rel="noreferrer">Vimeo</a>
+      <a href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+    </div>
+    <p class="copyright">© 2026 Wael Salih. All Rights Reserved.</p>
+  </footer>
 
-        <p class="lead">
-          I'm Wael — a photographer and filmmaker. I work quickly, bring strong taste, and deliver clean, cinematic visuals
-          that feel curated and modern.
-        </p>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">Close</button>
+    <img id="lightboxImg" src="" alt="Expanded photo" />
+  </div>
 
-        <div class="metrics" aria-label="Photography metrics">
-          <div class="metric">
-            <strong>200+</strong>
-            <span>STILLS CREATED</span>
-            <span class="metric-sub">Film-forward composition</span>
-          </div>
-          <div class="metric">
-            <strong>03</strong>
-            <span>COUNTRIES SHOT</span>
-            <span class="metric-sub">Stylized and cohesive</span>
-          </div>
-          <div class="metric">
-            <strong>05+</strong>
-            <span>BRANDS</span>
-            <span class="metric-sub">High-impact deliverables</span>
-          </div>
-        </div>
+  <script>
+    // Navbar scroll effect
+    const navbar = document.querySelector(".navbar");
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 100);
+    });
 
-        <div class="divider" aria-hidden="true"></div>
+    // Mobile menu toggle
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
 
-        <div class="timeline" aria-label="Work timeline">
-          <div class="timeline-item">
-            <div class="year year1">2026</div>
-            <div class="timeline-content">
-              <strong>Instagram & Film Projects</strong>
-              <span>New portfolio focus: film & high-impact stills</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="year year2">2024</div>
-            <div class="timeline-content">
-              <strong>Commercial & Studio Portfolio</strong>
-              <span>Lean production, strong aesthetic direction</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="year year3">2023</div>
-            <div class="timeline-content">
-              <strong>Photography & Film Foundations</strong>
-              <span>Lighting, composition, and storytelling built daily</span>
-            </div>
-          </div>
-        </div>
+    const toggleMenu = () => {
+      menuToggle.classList.toggle("active");
+      navLinks.classList.toggle("active");
+    };
 
-        <div class="footer">
-          <div class="footer-links">
-            <a href="mailto:wsalih@vt.edu">Email</a>
-            <a href="https://www.instagram.com/wsalihhh/" target="_blank" rel="noreferrer">Instagram</a>
-            <a href="/videos.html">Film</a>
-          </div>
+    menuToggle.addEventListener("click", toggleMenu);
+    menuToggle.addEventListener("keypress", (e) => {
+      if (e.key === "Enter" || e.key === " ") toggleMenu();
+    });
 
-          <div class="watermark">
-            Available for commercial work.
-          </div>
-        </div>
-      </div>
+    // Close menu on link click
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menuToggle.classList.remove("active");
+        navLinks.classList.remove("active");
+      });
+    });
 
-      <aside class="panel" aria-label="Photography portfolio">
-        <div class="section-head">
-          <div class="section-title">Select Photography</div>
-          <div class="section-subtitle">20 image gallery</div>
-        </div>
+    // Lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
 
-        <div class="gallery" aria-label="Gallery grid">
-          <a class="portfolio-item" href="images/photo_102.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 102" loading="lazy" src="images/photo_102.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 102</h3>
-              <span>Still</span>
-            </div>
-          </a>
+    document.querySelectorAll(".portfolio-item").forEach((item) => {
+      item.addEventListener("click", () => {
+        const img = item.querySelector("img");
+        lightboxImg.src = img.src;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+    });
 
-          <a class="portfolio-item" href="images/photo_111.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 111" loading="lazy" src="images/photo_111.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 111</h3>
-              <span>Still</span>
-            </div>
-          </a>
+    const closeLightbox = () => {
+      lightbox.classList.remove("active");
+      document.body.style.overflow = "";
+    };
 
-          <a class="portfolio-item" href="images/photo_112.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 112" loading="lazy" src="images/photo_112.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 112</h3>
-              <span>Still</span>
-            </div>
-          </a>
+    lightbox.addEventListener("click", closeLightbox);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox();
+    });
 
-          <a class="portfolio-item" href="images/photo_113.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 113" loading="lazy" src="images/photo_113.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 113</h3>
-              <span>Still</span>
-            </div>
-          </a>
+    // Scroll reveal
+    const revealElements = document.querySelectorAll(".reveal");
 
-          <a class="portfolio-item" href="images/photo_116.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 116" loading="lazy" src="images/photo_116.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 116</h3>
-              <span>Still</span>
-            </div>
-          </a>
+    const revealOnScroll = () => {
+      revealElements.forEach((el, index) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          setTimeout(() => {
+            el.classList.add("visible");
+          }, index * 50);
+        }
+      });
+    };
 
-          <a class="portfolio-item" href="images/photo_117.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 117" loading="lazy" src="images/photo_117.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 117</h3>
-              <span>Still</span>
-            </div>
-          </a>
-
-          <a class="portfolio-item" href="images/photo_118.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 118" loading="lazy" src="images/photo_118.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 118</h3>
-              <span>Still</span>
-            </div>
-          </a>
-
-          <a class="portfolio-item" href="images/photo_119.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 119" loading="lazy" src="images/photo_119.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 119</h3>
-              <span>Still</span>
-            </div>
-          </a>
-
-          <a class="portfolio-item" href="images/photo_121.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 121" loading="lazy" src="images/photo_121.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 121</h3>
-              <span>Still</span>
-            </div>
-          </a>
-
-          <a class="portfolio-item" href="images/photo_123.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 123" loading="lazy" src="images/photo_123.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 123</h3>
-              <span>Still</span>
-            </div>
-          </a>
-
-          <a class="portfolio-item" href="images/photo_124.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 124" loading="lazy" src="images/photo_124.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 124</h3>
-              <span>Still</span>
-            </div>
-          </a>
-
-          <a class="portfolio-item" href="images/photo_125.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 125" loading="lazy" src="images/photo_125.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 125</h3>
-              <span>Still</span>
-            </div>
-          </a>
-
-          <a class="portfolio-item" href="images/photo_127.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 127" loading="lazy" src="images/photo_127.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 127</h3>
-              <span>Still</span>
-            </div>
-          </a>
-
-          <a class="portfolio-item" href="images/photo_130.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 130" loading="lazy" src="images/photo_130.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 130</h3>
-              <span>Still</span>
-            </div>
-          </a>
-
-          <a class="portfolio-item" href="images/photo_134.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 134" loading="lazy" src="images/photo_134.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 134</h3>
-              <span>Still</span>
-            </div>
-          </a>
-
-          <a class="portfolio-item" href="images/photo_135.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 135" loading="lazy" src="images/photo_135.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 135</h3>
-              <span>Still</span>
-            </div>
-          </a>
-
-          <a class="portfolio-item" href="images/photo_137.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 137" loading="lazy" src="images/photo_137.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 137</h3>
-              <span>Still</span>
-            </div>
-          </a>
-
-          <a class="portfolio-item" href="images/photo_138.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 138" loading="lazy" src="images/photo_138.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 138</h3>
-              <span>Still</span>
-            </div>
-          </a>
-
-          <a class="portfolio-item" href="images/photo_139.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 139" loading="lazy" src="images/photo_139.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 139</h3>
-              <span>Still</span>
-            </div>
-          </a>
-
-          <a class="portfolio-item" href="images/photo_141.jpg" target="_blank" rel="noreferrer">
-            <img alt="Photo 141" loading="lazy" src="images/photo_141.jpg" />
-            <div class="portfolio-meta">
-              <h3>Photo 141</h3>
-              <span>Still</span>
-            </div>
-          </a>
-        </div>
-      </aside>
-    </section>
-
-    <section id="about" class="about" aria-label="About Wael">
-      <div class="about-card">
-        <h2>About</h2>
-        <p>
-          My work blends cinematic composition with clean, modern styling. I focus on creating visuals that feel polished,
-          intentional, and film-forward.
-        </p>
-
-        <div class="stats" aria-label="Skills">
-          <div class="stat">
-            <strong>Photography</strong>
-            <span>Composition, color, and framing</span>
-          </div>
-          <div class="stat">
-            <strong>Film Production</strong>
-            <span>Planning, lighting, and direction</span>
-          </div>
-          <div class="stat">
-            <strong>Editing</strong>
-            <span>Clean deliverables, fast turnaround</span>
-          </div>
-          <div class="stat">
-            <strong>Vision</strong>
-            <span>Strong taste & modern aesthetic</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="about-card">
-        <h2>Selected Projects</h2>
-        <p>
-          I’ve shot studio & location visuals, collaborated with brands, and built modern film projects designed for impact.
-        </p>
-
-        <div class="stats" aria-label="Project highlights">
-          <div class="stat">
-            <strong>Commercial Work</strong>
-            <span>Fast and high quality</span>
-          </div>
-          <div class="stat">
-            <strong>Art Direction</strong>
-            <span>Clean, cohesive, and curated</span>
-          </div>
-          <div class="stat">
-            <strong>Brand Identity</strong>
-            <span>Consistency across stills & film</span>
-          </div>
-          <div class="stat">
-            <strong>Portfolio Growth</strong>
-            <span>New projects in 2026</span>
-          </div>
-        </div>
-
-        <div class="divider" aria-hidden="true"></div>
-        <p style="color: rgba(255, 255, 255, 0.72);">
-          For film work, see my curated video portfolio.
-        </p>
-
-        <a class="btn btn-primary" href="/videos.html" style="display: inline-flex; align-items: center; gap: 10px;">
-          View Film
-          <span aria-hidden="true" style="opacity: 0.8;">→</span>
-        </a>
-      </div>
-    </section>
-  </main>
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+  </script>
 </body>
 </html>
