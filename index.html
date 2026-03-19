@@ -255,7 +255,50 @@
       opacity: 0.7;
       filter: blur(0.3px);
       transform: rotate(18deg);
-    }s ease, filter 0.6s ease;
+    }
+
+    .section-head {
+      padding: 18px 18px 0;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', system-ui, sans-serif;
+      letter-spacing: 0.06em;
+      font-size: 28px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .gallery {
+      padding: 14px 14px 18px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      align-items: start;
+    }
+
+    .portfolio-item {
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+      box-shadow: 0 16px 60px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 205px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease, filter 0.6s ease;
       filter: grayscale(30%);
     }
 
@@ -581,7 +624,8 @@
               <span>Still</span>
             </div>
           </a>
-<a class="portfolio-item" href="images/photo_118.jpg" target="_blank" rel="noreferrer">
+
+          <a class="portfolio-item" href="images/photo_118.jpg" target="_blank" rel="noreferrer">
             <img alt="Photo 118" loading="lazy" src="images/photo_118.jpg" />
             <div class="portfolio-meta">
               <h3>Photo 118</h3>
