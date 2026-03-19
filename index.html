@@ -4,36 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Wael Salih | Photography</title>
-
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
 
+  <title>Wael Salih | Photography & Film</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500&display=swap"
     rel="stylesheet"
   />
 
   <style>
-    :root {
-      --bg: #070a12;
-      --panel: rgba(255, 255, 255, 0.06);
-      --panelBorder: rgba(255, 255, 255, 0.12);
-      --text: rgba(255, 255, 255, 0.86);
-      --muted: rgba(255, 255, 255, 0.60);
-      --accent: #fbbf24;
-      --shadow: rgba(0, 0, 0, 0.35);
-      --shadowStrong: rgba(0, 0, 0, 0.50);
-      --radius: 18px;
-      --radiusLarge: 26px;
-      --transition: 220ms ease;
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    * {
-      box-sizing: border-box;
+    :root {
+      --bg: #0a0a0a;
+      --bg-secondary: #111111;
+      --text: #ffffff;
+      --text-muted: #888888;
+      --overlay: rgba(0, 0, 0, 0.6);
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     html {
@@ -41,931 +40,818 @@
     }
 
     body {
-      margin: 0;
-      font-family: "DM Sans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: "Montserrat", sans-serif;
+      background-color: var(--bg);
       color: var(--text);
-      background:
-        radial-gradient(800px 500px at 20% 10%, rgba(251, 191, 36, 0.14), transparent),
-        radial-gradient(700px 500px at 85% 40%, rgba(59, 130, 246, 0.10), transparent),
-        radial-gradient(900px 700px at 40% 95%, rgba(139, 92, 246, 0.12), transparent),
-        linear-gradient(180deg, #090e1f, #060913);
+      line-height: 1.6;
+      font-weight: 300;
       overflow-x: hidden;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    /* NAV */
+    /* Navigation */
     .navbar {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
-      background: rgba(7, 10, 18, 0.55);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background var(--transition), padding var(--transition);
     }
 
-    .nav-inner {
+    .navbar.scrolled {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 3rem;
+    }
+
+    .logo {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: var(--text);
-    }
-
-    .mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
-      background:
-        radial-gradient(circle at 30% 30%, rgba(251, 191, 36, 0.95), rgba(249, 115, 22, 0.60)),
-        radial-gradient(circle at 70% 20%, rgba(96, 165, 250, 0.85), rgba(96, 165, 250, 0.10));
-      position: relative;
-      overflow: hidden;
-    }
-
-    .mark::after {
-      content: "";
-      position: absolute;
-      inset: -30%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
-      transform: rotate(18deg);
-    }
-
-    .brand > span {
-      display: inline-flex;
-      flex-direction: column;
-      line-height: 1.05;
-    }
-
-    .brand-title {
-      font-family: "Playfair Display", serif;
-      font-size: 1.05rem;
-      letter-spacing: 0.04em;
-    }
-
-    .brand-subtitle {
-      font-size: 0.75rem;
-      color: var(--muted);
-      letter-spacing: 0.1em;
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
+      font-size: 1.1rem;
     }
 
     .nav-links {
       display: flex;
-      gap: 0.5rem;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+      gap: 2.5rem;
+      list-style: none;
     }
 
     .nav-links a {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 600;
-      padding: 0.6rem 0.85rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.05);
-      transition: transform var(--transition), background var(--transition);
-    }
-
-    .nav-links a:hover {
-      transform: translateY(-1px);
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .nav-links a:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 4px;
-    }
-
-    /* HERO */
-    .hero {
-      padding: 4.2rem 0 2rem;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 2.5rem;
-      align-items: center;
-    }
-
-    .hero-card {
-      border-radius: var(--radiusLarge);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
-      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
-      padding: 2.1rem 2.2rem;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color var(--transition);
       position: relative;
-      overflow: hidden;
     }
 
-    .hero-card::before {
+    .nav-links a::after {
       content: "";
       position: absolute;
-      inset: -40%;
-      background:
-        radial-gradient(circle at 25% 25%, rgba(251, 191, 36, 0.25), transparent 50%),
-        radial-gradient(circle at 70% 20%, rgba(96, 165, 250, 0.18), transparent 55%);
-      pointer-events: none;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--text);
+      transition: width var(--transition);
     }
 
-    .hero-card h1 {
-      font-family: "Playfair Display", serif;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      font-size: clamp(2.2rem, 3.9vw, 3.8rem);
-      margin: 0 0 1.2rem 0;
-    }
-
-    .hero-card p {
-      margin: 0;
-      font-size: 1.04rem;
-      line-height: 1.8;
-      color: var(--muted);
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 0.65rem;
-      flex-wrap: wrap;
-      margin-top: 1.45rem;
-    }
-
-    .btn {
-      text-decoration: none;
+    .nav-links a:hover,
+    .nav-links a.active {
       color: var(--text);
-      padding: 0.75rem 0.95rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: rgba(255, 255, 255, 0.06);
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-size: 0.78rem;
-      transition: transform var(--transition), background var(--transition);
     }
 
-    .btn:hover {
-      transform: translateY(-1px);
-      background: rgba(255, 255, 255, 0.10);
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
     }
 
-    .btn-accent {
-      background: linear-gradient(90deg, rgba(251, 191, 36, 0.9), rgba(249, 115, 22, 0.85));
-      border: none;
-      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
-    }
-
-    .hero-aside {
-      border-radius: var(--radiusLarge);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
-      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
-      padding: 1.45rem;
-    }
-
-    .aside-head {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.1rem;
-    }
-
-    .section-title {
-      margin: 0;
-      font-family: "Playfair Display", serif;
-      font-size: 1.55rem;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-    }
-
-    .subtext {
-      margin: 0;
-      font-size: 0.86rem;
-      color: var(--muted);
-      letter-spacing: 0.02em;
-    }
-
-    .social {
-      display: flex;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      padding: 0.6rem 0.85rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: rgba(255, 255, 255, 0.04);
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 700;
-      font-size: 0.82rem;
-      transition: transform var(--transition), background var(--transition);
-    }
-
-    .pill:hover {
-      transform: translateY(-1px);
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .tiny-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(251, 191, 36, 0.14);
-    }
-
-    /* GALLERY */
-    .gallery {
-      padding: 2.6rem 0 3.5rem;
-    }
-
-    .gallery-head {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1.1rem;
-    }
-
-    .portfolio-item {
-      grid-column: span 4;
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(255, 255, 255, 0.04);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
-      position: relative;
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
       cursor: pointer;
-      transition: transform var(--transition), box-shadow var(--transition);
+      z-index: 1001;
     }
 
-    .portfolio-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+    .menu-toggle span {
+      width: 25px;
+      height: 1px;
+      background: var(--text);
+      transition: var(--transition);
     }
 
-    .portfolio-item::before {
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .hero-bg::after {
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(800px 300px at 20% 20%, rgba(251, 191, 36, 0.18), transparent),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(0, 0, 0, 0.35));
-      opacity: 0;
-      transition: opacity var(--transition);
+      background: rgba(0, 0, 0, 0.5);
       z-index: 1;
     }
 
-    .portfolio-item:hover::before {
-      opacity: 1;
-    }
-
-    .portfolio-item img {
-      display: block;
-      width: 100%;
-      height: 330px;
-      object-fit: cover;
-      filter: grayscale(0.06) contrast(1.05) saturate(0.98);
-      transform: scale(1.02);
-      transition: transform var(--transition), filter var(--transition);
-    }
-
-    .portfolio-item:hover img {
-      transform: scale(1.06);
-      filter: grayscale(0) contrast(1.08) saturate(1.12);
-    }
-
-    .portfolio-info {
+    .hero-bg iframe {
       position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 1.1rem 1.15rem 1.2rem;
-      z-index: 2;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.42));
-    }
-
-    .portfolio-info h3 {
-      margin: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      font-family: "Playfair Display", serif;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-    }
-
-    .portfolio-meta {
-      margin: 0.25rem 0 0 0;
-      color: rgba(255, 255, 255, 0.82);
-      font-size: 0.84rem;
-      letter-spacing: 0.02em;
-    }
-
-    .meta-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 5px rgba(251, 191, 36, 0.14);
-      display: inline-block;
-      margin-right: 0.5rem;
-    }
-
-    /* CONTACT */
-    .contact {
-      padding: 3.2rem 0;
-    }
-
-    .contact-card {
-      border-radius: var(--radiusLarge);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
-      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
-      padding: 2.3rem 2.4rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contact-card::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background:
-        radial-gradient(circle at 25% 25%, rgba(251, 191, 36, 0.22), transparent 48%),
-        radial-gradient(circle at 70% 20%, rgba(96, 165, 250, 0.16), transparent 55%);
+      top: 50%;
+      left: 50%;
+      width: 177.78vh;
+      height: 100vh;
+      min-width: 100%;
+      min-height: 56.25vw;
+      transform: translate(-50%, -50%);
       pointer-events: none;
     }
 
-    .contact-card h2 {
-      margin: 0;
-      font-family: "Playfair Display", serif;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      font-size: 2rem;
+    .hero-content {
+      position: relative;
+      z-index: 2;
     }
 
-    .contact-card p {
-      margin: 0.8rem 0 0 0;
-      color: var(--muted);
-      line-height: 1.85;
-      max-width: 48ch;
+    .hero-logo {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(2rem, 8vw, 5rem);
+      letter-spacing: 0.3em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.3s forwards;
     }
 
-    .contact-meta {
-      margin-top: 1.1rem;
-      display: grid;
-      gap: 0.55rem;
+    .hero-tagline {
+      font-size: 0.85rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
       color: var(--text);
-      font-weight: 700;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.6s forwards;
+    }
+
+    .hero-tagline span {
+      display: inline-block;
+      margin: 0 0.75rem;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.9s forwards;
+    }
+
+    .scroll-hint span {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--text-muted), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* Section Styles */
+    section {
+      padding: 6rem 3rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .section-line {
+      width: 40px;
+      height: 1px;
+      background: var(--text);
+      margin: 0 auto;
+    }
+
+    /* Portfolio Grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      background: var(--bg-secondary);
+    }
+
+    .portfolio-item.portrait {
+      aspect-ratio: 3/4;
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease, filter 0.6s ease;
+      filter: grayscale(30%);
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.08);
+      filter: grayscale(0%);
+    }
+
+    /* Videos Section */
+    #videos {
+      padding: 0;
+    }
+
+    .videos-header {
+      padding: 6rem 3rem 3rem;
+      text-align: center;
+    }
+
+    .video-section {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .video-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .video-bg iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .video-bg.wide iframe {
+      width: 177.78vh;
+      height: 100vh;
+      min-width: 100%;
+      min-height: 41.89vw;
+    }
+
+    .video-bg.portrait iframe {
+      width: 100vw;
+      height: 52.73vw;
+      min-width: 189.64vh;
+      min-height: 100vh;
+    }
+
+    .video-bg.square iframe {
+      width: 137vh;
+      height: 100vh;
+      min-width: 100%;
+      min-height: 72.99vw;
+    }
+
+    .video-info {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .video-section:hover .video-info,
+    .video-section.in-view .video-info {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .video-title {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      letter-spacing: 0.2em;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+
+    /* Video Navigation Dots */
+    .video-nav {
+      position: fixed;
+      right: 3rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .video-nav.visible {
+      display: flex;
+    }
+
+    .video-dot {
+      width: 10px;
+      height: 10px;
+      border: 1px solid var(--text-muted);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: var(--transition);
+      background: transparent;
+    }
+
+    .video-dot.active {
+      background: var(--text);
+      border-color: var(--text);
+    }
+
+    .video-dot:hover {
+      border-color: var(--text);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      text-align: center;
+      padding: 8rem 3rem;
+      background: var(--bg-secondary);
+    }
+
+    .contact-title {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: 0.15em;
+      margin-bottom: 2rem;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      padding: 1rem 3rem;
+      border: 1px solid var(--text);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .contact-btn:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-links a {
+      font-size: 0.75rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      font-size: 0.76rem;
+      color: var(--text-muted);
+      transition: color var(--transition);
     }
 
-    .contact-meta span {
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      text-transform: none;
-      color: var(--muted);
-      margin-top: 0.25rem;
-    }
-
-    .contact-actions {
-      margin-top: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-    }
-
-    /* FOOTER */
-    .footer {
-      padding: 1.8rem 0 2.4rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(7, 10, 18, 0.55);
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .footer-inner a {
+    .social-links a:hover {
       color: var(--text);
-      text-decoration: none;
-      font-weight: 700;
-      border-bottom: 1px dotted rgba(255, 255, 255, 0.3);
     }
 
-    /* LIGHTBOX */
+    .copyright {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* Lightbox */
     .lightbox {
       position: fixed;
       inset: 0;
-      background: rgba(7, 10, 18, 0.78);
-      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.95);
       z-index: 2000;
-      display: none;
+      display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition), visibility var(--transition);
     }
 
-    .lightbox.open {
-      display: flex;
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
     }
 
     .lightbox img {
-      width: min(1100px, 100%);
-      height: min(80vh, 820px);
+      max-width: 90%;
+      max-height: 90vh;
       object-fit: contain;
-      border-radius: var(--radiusLarge);
-      box-shadow: 0 45px 120px rgba(0, 0, 0, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      background: rgba(0, 0, 0, 0.25);
+      transform: scale(0.9);
+      transition: transform var(--transition);
+    }
+
+    .lightbox.active img {
+      transform: scale(1);
     }
 
     .lightbox-close {
       position: absolute;
-      top: 1rem;
-      right: 1rem;
-      padding: 0.55rem 0.95rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      background: rgba(255, 255, 255, 0.15);
+      top: 2rem;
+      right: 2rem;
+      background: none;
+      border: none;
       color: var(--text);
-      font-weight: 800;
-      letter-spacing: 0.12em;
+      font-size: 1.5rem;
       cursor: pointer;
-      transition: background var(--transition);
+      opacity: 0.6;
+      transition: opacity var(--transition);
+      font-family: "Montserrat", sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.2em;
     }
 
     .lightbox-close:hover {
-      background: rgba(255, 255, 255, 0.25);
+      opacity: 1;
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 980px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
       }
-
-      .hero-aside {
-        order: -1;
-      }
-    }
-
-    @media (max-width: 860px) {
-      .portfolio-item {
-        grid-column: span 6;
-      }
-
-      .portfolio-item img {
-        height: 310px;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
-    @media (max-width: 580px) {
-      .portfolio-item {
-        grid-column: span 12;
+    @keyframes scrollPulse {
+      0%,
+      100% {
+        opacity: 0.4;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .portfolio-item img {
-        height: 280px;
+      section {
+        padding: 4rem 2rem;
       }
+    }
 
-      .nav-inner {
-        flex-direction: column;
-        align-items: flex-start;
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1.25rem 1.5rem;
       }
 
       .nav-links {
-        justify-content: flex-start;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--bg);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition), visibility var(--transition);
       }
 
-      .hero-card,
-      .hero-aside,
-      .contact-card {
-        padding: 1.6rem;
+      .nav-links.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav-links a {
+        font-size: 1rem;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+      }
+
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .video-nav {
+        right: 1rem;
+      }
+
+      .video-title {
+        letter-spacing: 0.1em;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="navbar">
-    <div class="container">
-      <div class="nav-inner">
-        <a class="brand" href="#top">
-          <div class="mark" aria-hidden="true"></div>
-          <span>
-            <span class="brand-title">Wael Salih</span>
-            <span class="brand-subtitle">Photography</span>
-          </span>
-        </a>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="#home" class="logo">Wael Salih</a>
 
-        <div class="nav-links">
-          <a href="#photography">Photography</a>
-          <a href="videos.html">Film</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </div>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#photography">Photography</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="menu-toggle" aria-label="Toggle navigation" role="button" tabindex="0">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
+  </nav>
+
+  <!-- Video Navigation Dots -->
+  <div class="video-nav" id="videoNav">
+    <button class="video-dot" data-index="0" aria-label="Video 1"></button>
+    <button class="video-dot" data-index="1" aria-label="Video 2"></button>
+    <button class="video-dot" data-index="2" aria-label="Video 3"></button>
+    <button class="video-dot" data-index="3" aria-label="Video 4"></button>
+    <button class="video-dot" data-index="4" aria-label="Video 5"></button>
+    <button class="video-dot" data-index="5" aria-label="Video 6"></button>
+    <button class="video-dot" data-index="6" aria-label="Video 7"></button>
+    <button class="video-dot" data-index="7" aria-label="Video 8"></button>
   </div>
 
-  <main id="top">
-    <section class="hero">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-card">
-            <h1>Photography that feels cinematic.</h1>
-            <p>
-              I’m <strong>Wael Salih</strong>, a photographer and filmmaker creating imagery built on light, texture,
-              and story.
-            </p>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <iframe
+        src="https://player.vimeo.com/video/898002243?autoplay=1&loop=1&muted=1&background=1&quality=1080p"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+        title="Background Video"
+      ></iframe>
+    </div>
 
-            <div class="hero-actions" aria-label="Primary actions">
-              <a class="btn btn-accent" href="#photography">View Photography</a>
-              <a class="btn" href="videos.html">Visit Film Page</a>
-            </div>
-          </div>
+    <div class="hero-content">
+      <h1 class="hero-logo">Wael Salih</h1>
+      <p class="hero-tagline">Photographer <span>·</span> Videographer <span>·</span> Editor</p>
+    </div>
 
-          <aside class="hero-aside" aria-label="Quick details">
-            <div class="aside-head">
-              <h2 class="section-title">About</h2>
-              <p class="subtext">On-location & studio</p>
-            </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
 
-            <div class="social">
-              <a class="pill" href="#photography">
-                <span class="tiny-dot"></span>
-                Portfolio
-              </a>
-              <a class="pill" href="videos.html">
-                <span class="tiny-dot"></span>
-                Film
-              </a>
-              <a class="pill" href="#contact">
-                <span class="tiny-dot"></span>
-                Contact
-              </a>
-            </div>
-          </aside>
-        </div>
+  <!-- Photography Section -->
+  <section id="photography">
+    <div class="section-header reveal">
+      <h2 class="section-title">Selected Works</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="portfolio-grid">
+      <div class="portfolio-item portrait reveal">
+        <img src="6.jpg" alt="Portrait - Peru" loading="lazy" />
       </div>
-    </section>
-
-    <section class="gallery" id="photography">
-      <div class="container">
-        <div class="gallery-head">
-          <div>
-            <h2 class="section-title">Photography Portfolio</h2>
-            <p class="subtext">Click an image to open a lightbox.</p>
-          </div>
-        </div>
-
-        <div class="grid" role="list" aria-label="Photo grid">
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="10.JPG">
-            <img src="10.JPG" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Portrait
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Cinematic lighting
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="11.JPG">
-            <img src="11.JPG" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Portrait
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Natural light
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="11680010.jpg">
-            <img src="11680010.jpg" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Fashion
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Rich color
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="11680016.jpg">
-            <img src="11680016.jpg" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Fashion
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Editorial
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="11680022.jpg">
-            <img src="11680022.jpg" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Commercial
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Brand storytelling
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="11680032.jpg">
-            <img src="11680032.jpg" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Lifestyle
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Warm tones
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="12.jpg">
-            <img src="12.jpg" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Portrait
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Soft light
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="13.jpg">
-            <img src="13.jpg" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Lifestyle
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Documentary style
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="13180044.jpg">
-            <img src="13180044.jpg" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Commercial
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Creative direction
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="14.jpg">
-            <img src="14.jpg" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Commercial
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Outdoor
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="16.JPG">
-            <img src="16.JPG" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Narrative
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Moody
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="17.jpeg">
-            <img src="17.jpeg" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Narrative
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Film grain
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="19.JPG">
-            <img src="19.JPG" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Fashion
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Styled
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="2.jpg">
-            <img src="2.jpg" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Portrait
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Monochrome feel
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="26.JPG">
-            <img src="26.JPG" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Landscape
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Clean composition
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="6.jpg">
-            <img src="6.jpg" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Portrait
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Character study
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="7.JPG">
-            <img src="7.JPG" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Lifestyle
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Movement
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="8.JPG">
-            <img src="8.JPG" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Fashion
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                High contrast
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="9.JPG">
-            <img src="9.JPG" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Fashion
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Studio
-              </div>
-            </figcaption>
-          </figure>
-
-          <figure class="portfolio-item" role="listitem" aria-label="Photo item" data-img="IMG_6212.jpg">
-            <img src="IMG_6212.jpg" alt="Photography sample" />
-            <figcaption class="portfolio-info">
-              <h3>
-                Commercial
-                <span aria-hidden="true">→</span>
-              </h3>
-              <div class="portfolio-meta">
-                <span class="meta-dot" aria-hidden="true"></span>
-                Product focus
-              </div>
-            </figcaption>
-          </figure>
-        </div>
+      <div class="portfolio-item portrait reveal">
+        <img src="2.jpg" alt="River Scene - Peru" loading="lazy" />
       </div>
-    </section>
-
-    <section class="contact" id="contact">
-      <div class="container">
-        <div class="contact-card">
-          <h2>Let’s work together.</h2>
-          <p>
-            For bookings and inquiries, reach out and let’s build something meaningful.
-          </p>
-
-          <div class="contact-actions">
-            <a class="btn btn-accent" href="#">Email</a>
-            <a class="btn" href="videos.html">Film Page</a>
-          </div>
-        </div>
+      <div class="portfolio-item reveal">
+        <img src="12.jpg" alt="River Boat - Peru" loading="lazy" />
       </div>
-    </section>
-  </main>
-
-  <footer class="footer" aria-label="Footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div>© 2026 Wael Salih</div>
-        <div><a href="#top">Back to top</a></div>
+      <div class="portfolio-item reveal">
+        <img src="10.JPG" alt="Street Market - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="11.JPG" alt="Street Scene - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="7.JPG" alt="Abstract Water - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="8.JPG" alt="Lake Swimming - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="9.JPG" alt="Swimming - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="26.JPG" alt="Mountains - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item portrait reveal">
+        <img src="16.JPG" alt="Waterfall - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="19.JPG" alt="Textile Hands - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item portrait reveal">
+        <img src="17.jpeg" alt="Waterfall Swim - Peru" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="13.jpg" alt="Street Documentary - DC" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="14.jpg" alt="Street Documentary - DC" loading="lazy" />
+      </div>
+      <div class="portfolio-item portrait reveal">
+        <img src="11680010.jpg" alt="Street Documentary" loading="lazy" />
+      </div>
+      <div class="portfolio-item reveal">
+        <img src="13180044.jpg" alt="Concert" loading="lazy" />
+      </div>
+      <div class="portfolio-item portrait reveal">
+        <img src="IMG_6212.jpg" alt="Night Scene" loading="lazy" />
+      </div>
+      <div class="portfolio-item portrait reveal">
+        <img src="11680022.jpg" alt="Night Market" loading="lazy" />
+      </div>
+      <div class="portfolio-item portrait reveal">
+        <img src="11680016.jpg" alt="Portrait" loading="lazy" />
+      </div>
+      <div class="portfolio-item portrait reveal">
+        <img src="11680032.jpg" alt="Neon Lights" loading="lazy" />
       </div>
     </div>
+  </section>
+
+  <!-- Videos Section -->
+  <section id="videos">
+    <div class="videos-header">
+      <div class="section-header reveal">
+        <h2 class="section-title">Film Work</h2>
+        <div class="section-line"></div>
+      </div>
+    </div>
+
+    <div class="video-section" data-video-index="0">
+      <div class="video-bg wide">
+        <iframe src="https://player.vimeo.com/video/1117972398?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" title="BSTLAND"></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">BSTLAND</h2>
+      </div>
+    </div>
+
+    <div class="video-section" data-video-index="1">
+      <div class="video-bg wide">
+        <iframe src="https://player.vimeo.com/video/924467659?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" title="Soiree"></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">Soiree</h2>
+      </div>
+    </div>
+
+    <div class="video-section" data-video-index="2">
+      <div class="video-bg wide">
+        <iframe src="https://player.vimeo.com/video/1174122753?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" title="Rave 03"></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">Rave 03</h2>
+      </div>
+    </div>
+
+    <div class="video-section" data-video-index="3">
+      <div class="video-bg wide">
+        <iframe src="https://player.vimeo.com/video/1041163275?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" title="Origin"></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">Origin</h2>
+      </div>
+    </div>
+
+    <div class="video-section" data-video-index="4">
+      <div class="video-bg portrait">
+        <iframe src="https://player.vimeo.com/video/984471494?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" title="Lydia Thomas"></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">Lydia Thomas</h2>
+      </div>
+    </div>
+
+    <div class="video-section" data-video-index="5">
+      <div class="video-bg portrait">
+        <iframe src="https://player.vimeo.com/video/906706546?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" title="Icaros"></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">Icaros</h2>
+      </div>
+    </div>
+
+    <div class="video-section" data-video-index="6">
+      <div class="video-bg square">
+        <iframe src="https://player.vimeo.com/video/911030224?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" title="Nothing Without Intention"></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">Nothing Without Intention</h2>
+      </div>
+    </div>
+
+    <div class="video-section" data-video-index="7">
+      <div class="video-bg wide">
+        <iframe src="https://player.vimeo.com/video/898153724?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" title="AĊiD"></iframe>
+      </div>
+      <div class="video-info">
+        <h2 class="video-title">AĊiD</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <h2 class="contact-title reveal">Let's Work Together</h2>
+    <a href="mailto:hello@waelsalih.com" class="contact-btn reveal">Get In Touch</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="https://www.behance.net/waelsalih" target="_blank" rel="noreferrer">Behance</a>
+      <a href="#" target="_blank" rel="noreferrer">Instagram</a>
+      <a href="#" target="_blank" rel="noreferrer">Vimeo</a>
+      <a href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+    </div>
+    <p class="copyright">© 2026 Wael Salih. All Rights Reserved.</p>
   </footer>
 
   <!-- Lightbox -->
@@ -975,30 +861,131 @@
   </div>
 
   <script>
-    // Simple lightbox
-    const items = document.querySelectorAll('.portfolio-item');
-    const lightbox = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lightboxImg');
-    const closeBtn = document.querySelector('.lightbox-close');
+    // Navbar scroll effect
+    const navbar = document.querySelector(".navbar");
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 100);
+    });
 
-    const openLightbox = (src) => {
-      lbImg.src = src;
-      lightbox.classList.add('open');
+    // Mobile menu toggle
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    const toggleMenu = () => {
+      menuToggle.classList.toggle("active");
+      navLinks.classList.toggle("active");
     };
 
-    items.forEach((item) => {
-      item.addEventListener('click', () => {
-        const src = item.getAttribute('data-img') || item.querySelector('img')?.getAttribute('src');
-        if (src) openLightbox(src);
+    menuToggle.addEventListener("click", toggleMenu);
+    menuToggle.addEventListener("keypress", (e) => {
+      if (e.key === "Enter" || e.key === " ") toggleMenu();
+    });
+
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menuToggle.classList.remove("active");
+        navLinks.classList.remove("active");
       });
     });
 
-    closeBtn?.addEventListener('click', () => lightbox.classList.remove('open'));
-    lightbox?.addEventListener('click', (e) => {
-      if (e.target === lightbox) lightbox.classList.remove('open');
+    // Active nav link on scroll
+    const sections = document.querySelectorAll("section[id]");
+    const navItems = document.querySelectorAll(".nav-links a");
+
+    const updateActiveNav = () => {
+      const scrollPos = window.scrollY + 200;
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute("id");
+        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+          navItems.forEach((item) => {
+            item.classList.remove("active");
+            if (item.getAttribute("href") === `#${sectionId}`) {
+              item.classList.add("active");
+            }
+          });
+        }
+      });
+    };
+
+    window.addEventListener("scroll", updateActiveNav);
+
+    // Lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+
+    document.querySelectorAll(".portfolio-item").forEach((item) => {
+      item.addEventListener("click", () => {
+        const img = item.querySelector("img");
+        lightboxImg.src = img.src;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
     });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') lightbox.classList.remove('open');
+
+    const closeLightbox = () => {
+      lightbox.classList.remove("active");
+      document.body.style.overflow = "";
+    };
+
+    lightbox.addEventListener("click", closeLightbox);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox();
+    });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealOnScroll = () => {
+      revealElements.forEach((el, index) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          setTimeout(() => {
+            el.classList.add("visible");
+          }, index * 50);
+        }
+      });
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+
+    // Video section handling
+    const videoSections = document.querySelectorAll(".video-section");
+    const videoNav = document.getElementById("videoNav");
+    const videoDots = document.querySelectorAll(".video-dot");
+    const videosSection = document.getElementById("videos");
+
+    const updateVideoNav = () => {
+      const videosRect = videosSection.getBoundingClientRect();
+      const isInVideos = videosRect.top < window.innerHeight * 0.5 && videosRect.bottom > window.innerHeight * 0.5;
+
+      videoNav.classList.toggle("visible", isInVideos);
+
+      let activeIndex = 0;
+      videoSections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.5 && rect.bottom > window.innerHeight * 0.5) {
+          activeIndex = index;
+          section.classList.add("in-view");
+        } else {
+          section.classList.remove("in-view");
+        }
+      });
+
+      videoDots.forEach((dot, index) => {
+        dot.classList.toggle("active", index === activeIndex);
+      });
+    };
+
+    window.addEventListener("scroll", updateVideoNav);
+
+    videoDots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const index = parseInt(dot.dataset.index);
+        videoSections[index].scrollIntoView({ behavior: "smooth" });
+      });
     });
   </script>
 </body>
