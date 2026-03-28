@@ -42,6 +42,11 @@
     body {
       font-family: "Montserrat", sans-serif;
       background-color: var(--bg);
+      background-image: url('IMG_3603.JPG');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
       color: var(--text);
       line-height: 1.6;
       font-weight: 300;
@@ -293,6 +298,7 @@
     /* ─── Sections ─── */
     section.content-section {
       padding: 6rem 3rem;
+      background: rgba(10, 10, 10, 0.85);
     }
 
     .section-header {
@@ -353,7 +359,7 @@
     /* ─── About ─── */
     .about-section {
       padding: 8rem 3rem;
-      background: var(--bg-secondary);
+      background: rgba(17, 17, 17, 0.92);
       overflow: hidden;
     }
 
@@ -367,13 +373,8 @@
     }
 
     .about-text {
-      
       order: 2;
     }
-    .about-image {
-  order: 2;
-}
-
 
     .about-label {
       font-family: "Bebas Neue", sans-serif;
@@ -464,56 +465,13 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center center;
+      object-position: 55% 25%;
       filter: grayscale(20%);
       transition: filter 0.6s ease;
     }
 
     .about-image-frame:hover img {
       filter: grayscale(0%);
-    }
-
-    .about-image-accent {
-      position: absolute;
-      bottom: -1rem;
-      right: -1rem;
-      width: 300px;
-      height: 300px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 50%;
-      z-index: -1;
-    }
-
-    /* ─── Footer ─── */
-    footer {
-      padding: 3rem;
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .social-links a {
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      transition: color var(--transition);
-    }
-
-    .social-links a:hover {
-      color: var(--text);
-    }
-
-    .copyright {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      letter-spacing: 0.1em;
     }
 
     /* ─── Lightbox ─── */
@@ -754,28 +712,50 @@
   <!-- ═══ PHOTOGRAPHY ═══ -->
   <section class="content-section" id="photography">
     <div class="section-header reveal">
-      <h2 class="section-title">Selected Works</h2>
+      <h2 class="section-title">Photography</h2>
       <div class="section-line"></div>
     </div>
 
     <div class="portfolio-grid">
+      <!-- Portraits -->
       <div class="portfolio-item portrait reveal"><img src="6.jpg" alt="" loading="lazy" /></div>
       <div class="portfolio-item portrait reveal"><img src="2.jpg" alt="" loading="lazy" /></div>
+      <div class="portfolio-item portrait reveal"><img src="4.JPG" alt="" loading="lazy" /></div>
+      <div class="portfolio-item portrait reveal"><img src="5.JPG" alt="" loading="lazy" /></div>
       <div class="portfolio-item portrait reveal"><img src="16.JPG" alt="" loading="lazy" /></div>
       <div class="portfolio-item portrait reveal"><img src="17.jpeg" alt="" loading="lazy" /></div>
+      <div class="portfolio-item portrait reveal"><img src="18.JPG" alt="" loading="lazy" /></div>
       <div class="portfolio-item portrait reveal"><img src="11680010.jpg" alt="" loading="lazy" /></div>
       <div class="portfolio-item portrait reveal"><img src="IMG_6212.jpg" alt="" loading="lazy" /></div>
       <div class="portfolio-item portrait reveal"><img src="11680022.jpg" alt="" loading="lazy" /></div>
       <div class="portfolio-item portrait reveal"><img src="11680016.jpg" alt="" loading="lazy" /></div>
       <div class="portfolio-item portrait reveal"><img src="11680032.jpg" alt="" loading="lazy" /></div>
+      <div class="portfolio-item portrait reveal"><img src="13180023.jpg" alt="" loading="lazy" /></div>
+      <div class="portfolio-item portrait reveal"><img src="13180030.jpg" alt="" loading="lazy" /></div>
+      <div class="portfolio-item portrait reveal"><img src="IMG_3603.JPG" alt="" loading="lazy" /></div>
 
+      <!-- Landscape -->
       <div class="portfolio-item reveal"><img src="12.jpg" alt="" loading="lazy" /></div>
       <div class="portfolio-item reveal"><img src="10.JPG" alt="" loading="lazy" /></div>
       <div class="portfolio-item reveal"><img src="11.JPG" alt="" loading="lazy" /></div>
+      <div class="portfolio-item reveal"><img src="06.jpeg" alt="" loading="lazy" /></div>
+      <div class="portfolio-item reveal"><img src="10.jpeg" alt="" loading="lazy" /></div>
       <div class="portfolio-item reveal"><img src="7.JPG" alt="" loading="lazy" /></div>
       <div class="portfolio-item reveal"><img src="8.JPG" alt="" loading="lazy" /></div>
       <div class="portfolio-item reveal"><img src="9.JPG" alt="" loading="lazy" /></div>
+      <div class="portfolio-item reveal"><img src="15.jpg" alt="" loading="lazy" /></div>
+      <div class="portfolio-item reveal"><img src="20.jpg" alt="" loading="lazy" /></div>
+      <div class="portfolio-item reveal"><img src="21.JPG" alt="" loading="lazy" /></div>
+      <div class="portfolio-item reveal"><img src="22.JPG" alt="" loading="lazy" /></div>
+      <div class="portfolio-item reveal"><img src="23.jpg" alt="" loading="lazy" /></div>
+      <div class="portfolio-item reveal"><img src="24.jpg" alt="" loading="lazy" /></div>
+      <div class="portfolio-item reveal"><img src="25.JPG" alt="" loading="lazy" /></div>
       <div class="portfolio-item reveal"><img src="26.JPG" alt="" loading="lazy" /></div>
+      <div class="portfolio-item reveal"><img src="27.jpg" alt="" loading="lazy" /></div>
+      <div class="portfolio-item reveal"><img src="28.jpg" alt="" loading="lazy" /></div>
+      <div class="portfolio-item reveal"><img src="29.jpg" alt="" loading="lazy" /></div>
+      <div class="portfolio-item reveal"><img src="30.jpg" alt="" loading="lazy" /></div>
+      <div class="portfolio-item reveal"><img src="31.JPG" alt="" loading="lazy" /></div>
       <div class="portfolio-item reveal"><img src="19.JPG" alt="" loading="lazy" /></div>
       <div class="portfolio-item reveal"><img src="13.jpg" alt="" loading="lazy" /></div>
       <div class="portfolio-item reveal"><img src="14.jpg" alt="" loading="lazy" /></div>
@@ -803,21 +783,10 @@
         <div class="about-image-frame">
           <img src="06390008_4.JPG" alt="" />
         </div>
-        <div class="about-image-accent"></div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/waelsalih/" target="_blank" rel="noreferrer">LinkedIn</a>
-      <a href="https://vimeo.com/user208231715" target="_blank" rel="noreferrer">Vimeo</a>
-      <a href="https://www.behance.net/waelsalih" target="_blank" rel="noreferrer">Behance</a>
-      <a href="https://www.instagram.com/zamzam.png" target="_blank" rel="noreferrer">Instagram</a>
-    </div>
-    <p class="copyright">&copy; 2026 Wael Salih. All Rights Reserved.</p>
-  </footer>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
